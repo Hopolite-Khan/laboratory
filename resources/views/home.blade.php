@@ -14,6 +14,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    Hello this is me and a test from github repo
                 </div>
             </div>
         </div>
