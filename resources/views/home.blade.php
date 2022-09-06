@@ -14,7 +14,7 @@
                     @endif
 
                     <p>
-                        <h2>Hello this is me and a test from github</h2>
+                        <h2 style="color: red;">Hello this is me and a test from github</h2>
                     </p>
                 </div>
             </div>
