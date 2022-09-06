@@ -13,8 +13,9 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
-                    Hello this is me and a test from github repo
+                    <p>
+                        <h2>Hello this is me and a test from github</h2>
+                    </p>
                 </div>
             </div>
         </div>
