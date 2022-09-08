@@ -8,6 +8,7 @@
     
     <link rel="stylesheet" href=" {{asset('assets/css/main/app.css')}} ">
     <link rel="stylesheet" href=" {{asset('assets/css/main/app-dark.css')}} ">
+    <script src="{{asset('assets/js/alpine.min.js')}}"></script>
 
 </head>
 <body>

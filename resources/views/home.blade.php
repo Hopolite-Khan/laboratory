@@ -12,10 +12,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <p>
-                        <h2 style="color: red;">Hello this is me and a test from github</h2>
-                    </p>
+                    <x-alert>hello alert</x-alert>
+                    <div x-data="{ open: false }">
+                        <button @click="open = !open" class="btn">Expand</button>
+                        <span x-show="open">
+                          Content...
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
