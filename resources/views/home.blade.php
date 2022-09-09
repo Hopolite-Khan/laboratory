@@ -13,9 +13,12 @@
                         </div>
                     @endif
 
-                    <p>
-                        <h2 style="color: red;">Hello this is me and a test from github</h2>
-                    </p>
+                    <div x-data="{ open: false }">
+                        <button @click="open = !open" class="btn">Expand</button>
+                        <span x-show="open">
+                          Content...
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
