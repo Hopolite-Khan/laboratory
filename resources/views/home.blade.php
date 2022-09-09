@@ -12,7 +12,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <x-alert>hello alert</x-alert>
+
                     <div x-data="{ open: false }">
                         <button @click="open = !open" class="btn">Expand</button>
                         <span x-show="open">

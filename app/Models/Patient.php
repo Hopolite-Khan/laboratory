@@ -10,4 +10,9 @@ class Patient extends Model
     // use HasFactory;
     protected $guarded = ['created_at' , 'updated_at'];
 
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
 }

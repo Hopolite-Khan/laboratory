@@ -3,7 +3,7 @@
         <div class="sidebar-wrapper active ps ps--active-y ">
 
             <div class="sidebar-header position-relative">
-                
+
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="logo">
                         <x-logo />
@@ -23,47 +23,25 @@
                 <ul class="menu">
                     <li class="sidebar-title">Menu</li>
 
-                    <li class="sidebar-item active">
-                        <a href="{{ route('home') }}" class='sidebar-link'>
-                            <i class="bi bi-grid-fill"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
+                    <x-sidebar-item route="home" title="Dashboard" />
+                    <x-sidebar-item route="ReservationBooking" title='Reservation' />
 
-                    <li class="sidebar-item">
-                        <a href="{{ route('ReservationBooking') }}" class='sidebar-link'>
-                            <i class="bi bi-stack"></i>
-                            <span> {{ __('Reservation') }} </span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item has-sub ">
+                    <x-sidebar-item children route="New Booking">
 
                         <a href="#" class='sidebar-link  '>
                             <i class="bi bi-bookmark-fill"></i> <span> {{ __('New Booking') }} </span>
                         </a>
 
                         <ul class="submenu ">
-                            <li class="submenu-item "><a href="{{ route('ReservationsRegistration') }}">New patient</a>
-                            </li>
-                            <li class="submenu-item "><a href="">Old patient</a> </li>
-                            <li class="submenu-item "><a href="">Company associated</a> </li>
+                            <x-submenu route="ReservationsRegistration" title="New patient" />
+                            <x-submenu route="ReservationsRegistration" title="Old patient" />
+                            <x-submenu route="ReservationsRegistration" title="Company associated" />
                         </ul>
-                    </li>
+                    </x-sidebar-item>
 
-                    <li class="sidebar-item  ">
+                    <x-sidebar-item children route="SimpleOperations">
                         <a href="#" class='sidebar-link'>
-                            <svg width="20px" height="20px" viewBox="0 0 492 512" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M211.688 151.673H266.14L211.688 206.125V151.673ZM16.501 293.082V151.672H148.039V269.773L147.389 270.423C146.979 270.834 146.613 271.287 146.298 271.775L132.511 293.081H16.501V293.082ZM148.041 495.499H16.501V495.498V354.09H93.036L77.845 377.568C75.732 380.834 76.187 385.133 78.937 387.885L103.829 412.777C105.423 414.37 107.535 415.193 109.667 415.193C111.214 415.193 112.771 414.758 114.145 413.87L148.04 391.939V495.499H148.041ZM343.227 354.09V495.498H211.688V354.09H343.227ZM343.227 293.082H272.53L343.227 222.385V293.082ZM345.643 196.631L246.776 295.498L210.24 332.035L199.612 338.912C199.54 338.958 199.477 339.011 199.407 339.059C199.37 339.085 199.327 339.104 199.289 339.13C199.241 339.159 199.198 339.195 199.149 339.224C199.085 339.264 199.018 339.296 198.955 339.336L151.809 369.841L110.781 396.388L95.321 380.931L115.127 350.32L143.925 305.814L159.676 281.472L162.124 279.024L209.27 231.879L291.892 149.257L339.913 101.236L390.474 151.796L345.643 196.631ZM452.707 151.796L433.262 171.244L407.98 145.962L345.75 83.7333C345.747 83.7303 345.742 83.7263 345.739 83.7233L320.469 58.4522L339.916 39.0052L365.196 64.2863L427.427 126.517L452.707 151.796ZM464.766 77.5113L433.264 109.014L382.702 58.4522L414.205 26.9482C428.146 13.0083 450.828 13.0093 464.767 26.9473C478.705 40.8863 478.705 63.5703 464.766 77.5113Z"
-                                    fill="#7C8DB5" />
-                                <path
-                                    d="M215.067 237.754C211.845 234.532 206.621 234.531 203.398 237.754L178.506 262.647C175.284 265.869 175.284 271.093 178.507 274.316C180.118 275.927 182.23 276.732 184.341 276.732C186.452 276.732 188.564 275.927 190.176 274.315L215.068 249.422C218.29 246.2 218.29 240.975 215.067 237.754Z"
-                                    fill="#7C8DB5" />
-                                <path
-                                    d="M327.079 125.739C323.857 122.519 318.634 122.517 315.409 125.739L228.288 212.861C225.066 216.084 225.066 221.307 228.288 224.53C229.9 226.141 232.012 226.946 234.123 226.946C236.234 226.946 238.346 226.141 239.958 224.53L327.079 137.408C330.301 134.184 330.301 128.961 327.079 125.739Z"
-                                    fill="#7C8DB5" />
-                            </svg>
+                            <x-operation />
                             <span>Sample Opreations</span>
                         </a>
                         <ul class="submenu ">
@@ -71,31 +49,26 @@
                                 <a href="">option1</a>
                             </li>
                         </ul>
-                    </li>
+                    </x-sidebar-item>
 
-                    <li class="sidebar-item  has-sub"> <a href="#" class='sidebar-link '>
+                    <x-sidebar-item children route="Registeration">
+                        <a href="#" class='sidebar-link '>
                             <svg width="24" height="24" class="bi" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M6.455 19L2 22.5V4C2 3.73478 2.10536 3.48043 2.29289 3.29289C2.48043 3.10536 2.73478 3 3 3H21C21.2652 3 21.5196 3.10536 21.7071 3.29289C21.8946 3.48043 22 3.73478 22 4V18C22 18.2652 21.8946 18.5196 21.7071 18.7071C21.5196 18.8946 21.2652 19 21 19H6.455ZM11 10H8V12H11V15H13V12H16V10H13V7H11V10Z"
                                     fill="#7C8DB5" />
                             </svg>
-                            <span>Registeration</span> </a>
+                            <span>Registeration</span>
+                        </a>
                         <ul class="submenu ">
-                            <li class="submenu-item  ">
-                                <a href="{{ url('Patients') }}">{{ __('Register Patients') }}</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('LabTest') }}">{{ __('Register Lab Tests') }}</a>
-                            </li>
-
-                            <li class="submenu-item ">
-                                <a href="{{ route('GetHospital') }}">{{ __('Register Hospitals') }}</a>
-                            </li>
+                            <x-submenu route="PatientRegistration" title="Register Patients" />
+                            <x-submenu route="LabTest" title="Register Lab Tests" />
+                            <x-submenu route="GetHospital" title="Register Hospitals" />
                         </ul>
-                    </li>
+                    </x-sidebar-item>
 
-                    <li class="sidebar-item  has-sub">
+                    <x-sidebar-item children route="Report">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-pen-fill"></i>
                             <span>Reports</span>
@@ -130,7 +103,7 @@
                                 <a href=""> Outsource Monthly Report </a>
                             </li>
                         </ul>
-                    </li>
+                    </x-sidebar-item>
 
                     <li class="sidebar-item   ">
                         <a href="#" class='sidebar-link'>
@@ -148,8 +121,7 @@
                             <span>QR Scanner</span> </a>
                     </li>
 
-                    <li class="sidebar-item text-white "> <a href="{{ route('Reservation') }}"
-                            class='sidebar-link   '>
+                    <li class="sidebar-item text-white "> <a href="{{ route('Reservation') }}" class='sidebar-link   '>
                             <i class="bi bi-building"></i> <span> {{ __('Organization') }} </span> </a>
                     </li>
 
