@@ -45,9 +45,9 @@
 
                     @foreach ($RESERVATIONS as $reserve)
                         <tr>
-                            <td> {{ $reserve->id }} </td>
+                            <td> {{ $reserve->patient_id }} </td>
                             <td> <a style="border-bottom:2px dotted black;"
-                                    href="{{ route('PatientProfile', ['id' => 9]) }}"> {{ $reserve->full_name }} </a>
+                                    href="{{ route('PatientProfile', ['id' => $reserve->patient_id]) }}"> {{ $reserve->full_name }} </a>
                             </td>
                             <td>{{ $reserve->mobile }} </td>
                             <td> Zemens Medical Hospital </td>

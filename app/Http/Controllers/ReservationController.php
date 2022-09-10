@@ -11,12 +11,8 @@ use Carbon\Carbon;
 use PDF;
 class ReservationController extends Controller
 {
-
-
     public function index() {
-
-
-        $reservations = Reservation::orderBy('id', 'DESC')->paginate(10);
+        $reservations = Reservation::orderByDesc('id')->paginate(10);
         return view('/Reservations.index' , ['reservations' => $reservations]);
     }
 
@@ -95,28 +91,19 @@ class ReservationController extends Controller
         // dd('no data!');
         // Patient::create($request->all());
         return redirect()->route('Reservation')->with('success' , 'New Reservations Registered Successfully');
-
     }
-
-
-
     public function reservation_booking(){
 
-         $reservations = DB::select("SELECT *
+        $reservations = DB::select("SELECT *
         FROM patients
         INNER JOIN reservations ON patients.id = reservations.patient_id
         INNER JOIN lab_tests ON lab_tests.id = reservations.lab_test_id  GROUP BY patients.full_name ORDER BY reservations.id DESC ", []);
+
         return view('/Reservations.reservation_booking' , [  'RESERVATIONS' => $reservations]);
     }
-
-
-
     public function view_patient_profile(Request $request) {
-
-
-
-
-
+        // dd($request->id);
+        $patientID = $request->id;
         $results = DB::select("SELECT
             COUNT(reservations.patient_id) AS reservation_count ,
             SUM(lab_tests.recieved_amount) AS payment_amount ,
@@ -125,39 +112,26 @@ class ReservationController extends Controller
             INNER JOIN reservations ON patients.id = reservations.patient_id
             INNER JOIN lab_tests ON lab_tests.id = reservations.lab_test_id
             WHERE reservations.patient_id = ? ", [$request->id]);
-
-
-
-
-
-
-
-        $hospital = DB::table('hospitals')->where('id', $results[0]->hospital_id)->get();
-
+        $patient = Patient::find($patientID);
+        // dd($patient);
+        $reservation = reset($results);
+        $hospital = DB::table('hospitals')->where('id', $reservation->hospital_id)->get();
         $RESERVE = DB::select("SELECT *
                 FROM patients
                 INNER JOIN reservations ON patients.id = reservations.patient_id
                 INNER JOIN lab_tests ON lab_tests.id = reservations.lab_test_id
                 WHERE reservations.patient_id = ?  ORDER BY reservations.id DESC ", [$request->id]);
-
-
+                // dd(reset($results));
         return view('/Patients.patient_profile' , [
-          'PATIENTS' =>  DB::table('patients')->where('id', $request->id)->get()  ,
-          'RESERVATION' =>   $results ,   'HOSPITAL' => $hospital   ,
-          'RESERVE' => $RESERVE   ] );
-
+          'PATIENTS' => Patient::find($patientID),
+          'RESERVATION' => reset($results), 'HOSPITAL' => reset($hospital),
+          'RESERVE' => $RESERVE] );
     }
 
-
     public function print_patient_barcode ($id){
-
-
          $results = DB::select("SELECT * FROM patients WHERE id = ? ", [$id]);
-
          $pdf = PDF::loadView('/Patients.Barcode', ['RESERVATION' =>   $results ]);
-
          return $pdf->download( 'Barcode of ' .  $results[0]->full_name .'.pdf');
-
     }
 
 }

@@ -42,8 +42,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/Hospital', [App\Http\Controllers\HospitalController::class, 'index'])->name('GetHospital');
     Route::get('/Hospital/Create', [App\Http\Controllers\HospitalController::class, 'create'])->name('HospitalRegistration');
     Route::post('/Hospital/Store', [App\Http\Controllers\HospitalController::class, 'store'])->name('StoreHospital');
-   
 
 
-    
+
+
 });
