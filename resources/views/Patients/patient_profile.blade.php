@@ -6,7 +6,7 @@
     <div class="card-body fs-5 fw-bold d-flex justify-content-between">
         <span>{{ __('Patient Profile') }}</span>
         <span>
-            <a href="{{  route('PrintPatientsBarcode' , ['id' =>  $RESERVATION[0]->id ] )  }}" class = "btn btn-sm btn-primary" >Print Barcode</a>
+            <a href="{{  route('PrintPatientsBarcode' , ['id' =>  $RESERVATION->id ] )  }}" class = "btn btn-sm btn-primary" >Print Barcode</a>
         </span>
     </div>
 </div>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="col-md-8">
                         <h6 class="text-muted font-semibold">Paid Amount</h6>
-                        <h6 class="font-extrabold mb-0">{{number_format($RESERVATION[0]->payment_amount ,2)}}</h6>
+                        <h6 class="font-extrabold mb-0">{{number_format($RESERVATION->payment_amount ,2)}}</h6>
                     </div>
                 </div>
             </div>
@@ -72,14 +72,14 @@
                     </div>
                     <div class="col-md-8">
                         <h6 class="text-muted font-semibold">Reservation</h6>
-                        <h6 class="font-extrabold mb-0">{{$RESERVATION[0]->reservation_count}}</h6>
+                        <h6 class="font-extrabold mb-0">{{$RESERVATION->reservation_count}}</h6>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    
+
+
     <div class="col-6 col-lg-3 col-md-6">
         <div class="card">
             <div class="card-body px-3 py-4-5">
@@ -112,36 +112,36 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between ">
                 <h4 class="card-title fw-bold fs-5"> Patient Information</h4>
-                <div class="badge bg-dark badge-pill badge-round ">{{$RESERVATION[0]->status}}</div>
+                <div class="badge bg-dark badge-pill badge-round ">{{$RESERVATION->status}}</div>
             </div>
             <div class="card-body">
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span> {{$RESERVATION[0]->full_name}} </span>
+                        <span> {{$RESERVATION->full_name}} </span>
                         <span class="badge bg-dark badge-pill badge-round ml-1">Full Name</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span> {{$RESERVATION[0]->id}} </span>
+                        <span> {{$RESERVATION->id}} </span>
                         <span class="badge bg-dark badge-pill badge-round ml-1">ID</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span> {{$RESERVATION[0]->mobile}} </span>
+                        <span> {{$RESERVATION->mobile}} </span>
                         <span class="badge bg-dark badge-pill badge-round ml-1">Mobile</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span> {{$RESERVATION[0]->gender}} </span>
+                        <span> {{$RESERVATION->gender}} </span>
                         <span class="badge bg-dark badge-pill badge-round ml-1">Gender</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span> {{$RESERVATION[0]->country}} </span>
+                        <span> {{$RESERVATION->country}} </span>
                         <span class="badge bg-dark badge-pill badge-round ml-1">Country</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span> {{$RESERVATION[0]->passport_id}} </span>
+                        <span> {{$RESERVATION->passport_id}} </span>
                         <span class="badge bg-dark badge-pill badge-round ml-1">Passport</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span> {{$RESERVATION[0]->id_type}} </span>
+                        <span> {{$RESERVATION->id_type}} </span>
                         <span class="badge bg-dark badge-pill badge-round ml-1">ID Type</span>
                     </li>
 
@@ -152,25 +152,25 @@
 
 
 
-     
+
  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-0 ">
     <div class="card mb-3 " >
         <div class="card-body   ">
             <ul class="list-group ">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span> {{$HOSPITAL[0]->name}} </span>
+                    <span> {{$HOSPITAL && $HOSPITAL->name}} </span>
                     <span class="badge bg-dark badge-pill badge-round ml-1">Hospital Name</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span> {{$HOSPITAL[0]->address }}  </span>
+                    <span> {{$HOSPITAL && $HOSPITAL->address }}  </span>
                     <span class="badge bg-dark badge-pill badge-round ml-1">Address</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span> {{$HOSPITAL[0]->landmark}}   </span>
+                    <span> {{$HOSPITAL && $HOSPITAL->landmark}}   </span>
                     <span class="badge bg-dark badge-pill badge-round ml-1">Landmark</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span> {{$HOSPITAL[0]->status }}   </span>
+                    <span> {{$HOSPITAL && $HOSPITAL->status }}   </span>
                     <span class="badge bg-dark badge-pill badge-round ml-1">Status</span>
                 </li>
             </ul>
@@ -178,13 +178,13 @@
     </div>
 
 
-    
+
     <div class="card ">
         <div class="card-body fs-5 fw-bold  ">
             <div class = "text-center" >
-                <div class = "mb-1" ><?php  echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG("{$RESERVATION[0]->mobile}" , 'C39+',1,40 ) . '" alt="barcode"   />'; ?> </div>   
-                <div style = "font-size:12px;" > {{$RESERVATION[0]->mobile}} / DOB: {{$RESERVATION[0]->dob}}  </div> 
-                <div class = "fs-3" >{{$RESERVATION[0]->full_name}} </div>
+                <div class = "mb-1" ><?php  echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG("{$RESERVATION->mobile}" , 'C39+',1,40 ) . '" alt="barcode"   />'; ?> </div>
+                <div style = "font-size:12px;" > {{$RESERVATION->mobile}} / DOB: {{$RESERVATION->dob}}  </div>
+                <div class = "fs-3" >{{$RESERVATION->full_name}} </div>
             </div>
         </div>
     </div>
@@ -197,7 +197,7 @@
 
 
 
- 
+
 
  <div class="card mb-5 shadow "  >
    <div class="card-body  table-responsive    ">
@@ -222,7 +222,7 @@
                     <td>{{$reserve->test_price}}  </td>
                     <td>{{$reserve->payment_method}}  </td>
                     <td> {{$reserve->status}}</td>
-                    <td> 
+                    <td>
                         <a href="#" class = "btn btn-dark btn-sm ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
                         <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
@@ -233,9 +233,9 @@
                 </tr>
             @endforeach
         </table>
- 
 
- 
+
+
  </div>
  </div>
 
