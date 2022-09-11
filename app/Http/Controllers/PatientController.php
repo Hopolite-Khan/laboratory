@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hospital;
 use Illuminate\Http\Request;
 use App\Models\Patient;
 use DB;
@@ -12,7 +13,8 @@ class PatientController extends Controller
         return view('/Patients.index' , ['PATIENTS' =>  Patient::all() ]);
     }
     public function create() {
-        return view('/Patients.create');
+        $hospitals = Hospital::all();
+        return view('/Patients.create', ['hospitals' => $hospitals]);
     }
 
     public function store(Request $request){
@@ -30,15 +32,12 @@ class PatientController extends Controller
     public function search(Request $request) {
             $data = '';
             $search = $request->search;
-
-
             if($search != '')
             {
                 $field = 'full_name';
                 if(is_numeric($search)) $field = 'mobile';
                 $data = DB::table('patients')->where( $field  ,'LIKE','%' . $search . '%')->get();
             }
-
             return json_encode($data);
     }
 
