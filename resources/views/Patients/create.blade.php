@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     <div class="card mb-3 shadow">
         <div class="card-body d-flex justify-content-between">
@@ -114,30 +115,44 @@
                             </div>
                         @endif
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12  mt-2 "
+                    <group class="position-relative col-lg-4 col-md-4 col-sm-8 col-xs-12  mt-2 "
                         x-data='{
                             hospitals: @json($hospitals),
+                            dropdown: false,
                             search: "",
-                            get searchItem() {
-                            return this.hospitals.filter(i => i.startWith(this.search))
-                        } }'>
-                        <label class="form-label" for="hospital"> Hospital </label>
+                            selected: "",
+                            selectItem: function(item) {
+                                this.selected = item;
+                                this.search = item.name;
+                            },
+                            searchItem: function() {
+                                return this.hospitals.filter(i =>
+                                JSON.stringify(i).toLowerCase().includes(this.search.toLowerCase()))
+                            }
+                        }'>
+                        <label class="form-label" for="hospital">Hospital</label>
+                        <input type="hidden" name="hospital_id" :value="selected.id"/>
                         <input
-                            type="text"
-                            @input.debounce.500ms='searchItem'
+                            x-on:click="dropdown=true"
+                            x-on:click.outside="dropdown=false"
                             x-model="search"
-                            class="form-control {{ $errors->has('hospital') ? 'is-invalid' : '' }}  " name="hospital"
-                            value="{{ old('hospital') }}"
+                            x-on:change="searchItem()"
+                            class="form-control {{ $errors->has('hospital') ? 'is-invalid' : '' }}  "
+                            type="text"
                             id="hospital">
-                        <template x-for='hospitals in hospital' :key="hospital.id">
-                            <span x-text="hospital.name"></span>
-                        </template>
+                            <template x-if="dropdown">
+                                <ul class="dropdown-menu shadow position-absolute d-grid list-unstyled rounded mt-1 bg-white unstyled-list">
+                                    <template x-for='hospital in searchItem' :key="hospital.id">
+                                        <li x-text="hospital.name" class="dropdown-item" @click="selectItem(hospital)"></li>
+                                </template>
+                                </ul>
+                            </template>
                         @if ($errors->has('hospital'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('hospital') }}
                             </div>
                         @endif
-                    </div>
+                    </group>
 
                 </div><!-- END OF FIRST ROW IN THE PAGE  -->
 
@@ -153,3 +168,21 @@
         </div><!-- END OF Card-body -->
     </div>
 @endsection
+{{-- @push('scripts')
+    <script>
+        document.addEventListener('alpine:init', function() {
+            Alpine.store('store', {
+                dropdown: false,
+                hospitals: @js($hospitals),
+                search: '',
+                selected_hospital: {},
+                selectHospital: function(item){
+
+                },
+                searchHospital: function(){
+
+                }
+            })
+        });
+    </script>
+@endpush --}}
