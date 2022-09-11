@@ -18,6 +18,7 @@ class PatientController extends Controller
     }
 
     public function store(Request $request){
+        dd($request);
         $this->validate($request, [
             'full_name' => 'required',
             'passport_id' => 'required',

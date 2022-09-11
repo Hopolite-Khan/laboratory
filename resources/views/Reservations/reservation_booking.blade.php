@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('style')
+@push('styles')
     <style>
         .link {
             border-bottom: 2px dotted black;

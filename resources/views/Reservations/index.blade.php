@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('style')
+@push('styles')
     <style>
         svg.w-5.h-5 {
             width: var(--size);

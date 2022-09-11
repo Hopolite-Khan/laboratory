@@ -8,8 +8,8 @@
 
     <link rel="stylesheet" href=" {{ asset('assets/css/main/app.css') }} ">
     <link rel="stylesheet" href=" {{ asset('assets/css/main/app-dark.css') }} ">
-    <script src="{{ asset('assets/js/alpine.min.js') }}"></script>
-    @yield('style')
+    <script src="{{ asset('assets/js/alpine.min.js') }}" defer></script>
+    @stack('styles')
 </head>
 
 <body>
@@ -101,6 +101,7 @@
                 </div>
             </div>
         </footer>
+        @stack('scripts')
         <script src="{{ asset('assets/js/app.js') }}"></script>
 
 </body>
