@@ -16,12 +16,12 @@ class ReservationController extends Controller
     public function index()
     {
         $reservations = Reservation::orderByDesc('id')->paginate(10);
-        return view('/Reservations.index', ['reservations' => $reservations]);
+        return view('Reservations.index', ['reservations' => $reservations]);
     }
 
     public function create()
     {
-        return view('/Reservations.create', [
+        return view('Reservations.create', [
             'PATIENTS' =>  Patient::all()->sortByDesc('id'),
             'TESTS' =>   LabTest::all(['test_name', 'test_price', 'test_type', 'id'])->sortByDesc('id')
         ]);
@@ -100,10 +100,8 @@ class ReservationController extends Controller
     }
     public function reservation_booking()
     {
-
         $patients = Patient::paginate(10);
-
-        return view('/Reservations.reservation_booking', ['patients' => $patients]);
+        return view('Reservations.reservation_booking', ['patients' => $patients]);
     }
     public function view_patient_profile($id)
     {
@@ -123,5 +121,10 @@ class ReservationController extends Controller
         $results = Patient::find($id);
         $pdf = PDF::loadView('/Patients.Barcode', ['RESERVATION' =>   $results]);
         return $pdf->download('Barcode of ' .  $results[0]->full_name . '.pdf');
+    }
+    public function destroy($id)
+    {
+        Reservation::destroy($id);
+        return redirect()->route('Reservation')->with('success','it has been deleted successfully.');
     }
 }
