@@ -7,7 +7,7 @@
             --size: 1rem;
         }
     </style>
-@endsection
+@endpush
 @section('content')
     <!-- Success message -->
     @if (Session::has('success'))
@@ -19,12 +19,12 @@
     <div class="card mb-3 shadow">
         <div class="card-body d-flex justify-content-between">
             <h5 class="my-2">
-                <img src="{{ asset('images/paper.svg') }}" alt="" />
+                @svg('paper')
                 All Availabile Reservations
             </h5>
             <div>
                 <a href="{{ route('ReservationsRegistration') }}" class="btn btn-outline-primary  my-2" title=" ">
-                    <x-plus />
+                    @svg('plus')
                     Reservation
                 </a>
             </div>
@@ -57,14 +57,18 @@
                         <td>{{ $reserve->patient->nationality }} </td>
                         <td>{{ $reserve->patient->gender }} </td>
                         <td>
-                            <a href="" class="btn btn-danger">
-                                <x-remove />
-                            </a>
+                            <form action="{{ route('DeleteReservation', $reserve->id)}}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" onclick="return confirm('Do you wanna delete it?')" style="--size: 2rem" class="btn btn-outline-danger rounded-circle s-1 btn-sm d-flex align-items-center">
+                                    @svg('remove')
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
             </table>
-            {{ $reservations->links() }}
+            {{ $reservations->links('partials.paginator') }}
         </div>
     </div>
 @endsection

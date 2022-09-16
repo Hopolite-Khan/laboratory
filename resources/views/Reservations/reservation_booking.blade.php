@@ -6,7 +6,7 @@
         }
 
         .h-1 {
-            --size: 1rem;
+            --size: 2rem;
             height: var(--size);
             width: var(--size);
         }
@@ -15,7 +15,7 @@
             caption-side: top;
         }
     </style>
-@endsection
+@endpush
 @section('content')
     <!-- Success message -->
     @if (Session::has('success'))
@@ -25,7 +25,7 @@
     @endif
 
     <div class="card mb-3 shadow">
-        <div class="card-body d-flex justify-content-between">
+        <div class="card-body d-flex flex-wrap justify-content-between">
             <h5 class="my-2">
                 @svg('paper')
                 Reservation List - Pending Tests
@@ -55,54 +55,67 @@
                     </tr>
                 </thead>
                 @foreach ($patients as $item)
-                    <tbody x-data="{ open: false }" style="border: none !important;">
-                        <tr>
-                            <td> {{ $item->id }}</td>
-                            <td>
-                                <a class="link" href="{{ route('PatientProfile', ['id' => $item->id]) }}">
-                                    {{ $item->full_name }}
-                                </a>
-                            </td>
-                            <td>{{ $item->mobile }} </td>
-                            <td>{{ $item->hospital->name }} </td>
-                            <td>{{ $item->reservations->sum('paid') }} </td>
-                            <td>{{ $item->status }} </td>
-                            <td class="d-flex gap-1">
-                                <button @click='open = !open' class="btn btn-outline-primary rounded-circle p-2 h-1 d-flex align-items-center" style="--size: 2rem;">
-                                    @svg('plus', 'h-1')
-                                </button>
-                                <a class="btn btn-outline-primary rounded-circle p-2 h-1 d-flex align-items-center" style="--size: 2rem;" href="{{ route('PatientProfile', ['id' => $item->id]) }}">
-                                    <i class="bi bi-eye h-1" style="--size:1rem"></i>
-                                    {{-- @svg('eye') --}}
-                                </a>
-                            </td>
-                        </tr>
-                        <tr x-show="open">
-                            <td colspan="7">
-                                <table class="table">
-                                    <caption>Reservations list of {{ $item->full_name }} </caption>
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Test</th>
-                                            <th>Date</th>
-                                            <th>Paid</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($item->reservations as $i)
+                    @if (count($item->reservations) > 0)
+
+                        <tbody x-data="{ open: false }" style="border: none !important;">
+                            <tr>
+                                <td> {{ $item->id }}</td>
+                                <td>
+                                    <a class="link" href="{{ route('PatientProfile', ['id' => $item->id]) }}">
+                                        {{ $item->full_name }}
+                                    </a>
+                                </td>
+                                <td>{{ $item->mobile }} </td>
+                                <td>{{ $item->hospital->name }} </td>
+                                <td>{{ $item->reservations->sum('paid') }} </td>
+                                <td>{{ $item->status }} </td>
+                                <td>
+                                    <ul class="d-flex gap-1 list-unstyled m-0">
+                                        <li>
+                                            <button @click='open = !open' class="btn btn-outline-danger rounded-circle p-2 h-1 d-flex align-items-center">
+                                                @svg('plus')
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <a class="btn btn-outline-primary rounded-circle p-2 h-1 d-flex align-items-center" href="{{ route('PatientProfile', ['id' => $item->id]) }}">
+                                                @svg('eye')
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn btn-outline-success rounded-circle p-2 h-1 d-flex align-items-center" href="{{ route('PatientRegistration', ['id' => $item->id]) }}">
+                                                @svg('edit')
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr x-show="open">
+                                <td colspan="7" style="border: none">
+                                    <table class="table">
+                                        <caption>Reservations list of {{ $item->full_name }} </caption>
+                                        <thead>
                                             <tr>
-                                                <td>{{ $i->id }}</td>
-                                                <td>{{ $i->labTest->test_name }}</td>
-                                                <td>{{ $i->reservation_date }}</td>
-                                                <td>{{ $i->paid }}</td>
+                                                <th>ID</th>
+                                                <th>Test</th>
+                                                <th>Date</th>
+                                                <th>Paid</th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                    </tbody>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($item->reservations as $i)
+                                                <tr>
+                                                    <td>{{ $i->id }}</td>
+                                                    <td>{{ $i->labTest->test_name }}</td>
+                                                    <td>{{ $i->reservation_date }}</td>
+                                                    <td>{{ $i->paid }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    @endif
                 @endforeach
             </table>
         </div>

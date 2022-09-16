@@ -13,12 +13,6 @@
                         </div>
                     @endif
 
-                    <div x-data="{ open: false }">
-                        <button @click="open = !open" class="btn">Expand</button>
-                        <span x-show="open">
-                          Content...
-                        </span>
-                    </div>
                 </div>
             </div>
         </div>

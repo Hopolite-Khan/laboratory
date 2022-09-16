@@ -16,6 +16,7 @@
             align-items: center;
             flex: 1;
         }
+
         @media (max-width: 768px) {
             .stepper-item {
                 font-size: 12px;
@@ -104,15 +105,11 @@
         </div>
     </div>
 
-
-
-
-
     <div class="card mb-3 shadow">
         <div class="card-body  ">
             <div class="stepper-wrapper">
                 <div class="stepper-item" id="first_circle">
-                    <div class="step-counter ">1</div>
+                    <div class="step-counter">1</div>
                     <div class=" ">Select Account</div>
                 </div>
 
@@ -129,21 +126,46 @@
         </div>
     </div>
 
-
-
-
     <div class="card   mb-5 shadow ">
         <div class="card-body">
 
             <div class="row" id="FirstStep">
                 <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12  " style="z-index: 11;">
-                    <div class="form-group position-relative has-icon-right">
-                        <input type="text" class="form-control" name="patient_name" onclick="HideLiveSearch()"
-                            placeholder="Search Patients " onkeyup="AjaxSearch(this.value)" id="patient_name"
-                            autocomplete="off">
-                        <div class="form-control-icon">
-                            <i class="bi bi-search"></i>
-                        </div>
+                    <div class="form-group position-relative has-icon-right w-100"
+                        x-init="patients = (await (await fetch('/Patients/search')).json()).data;"
+                        x-data='{
+                            patients: [],
+                            getPatiens: async () => {
+                                let data = await fetch(`/Patients/getPatiens?q=${this.search}`);
+                                this.patients = (await data.json()).data
+                            },
+                            dropdown: false,
+                            search: "",
+                            selected: "",
+                            selectItem: function(item) {
+                                this.selected = item;
+                                this.search = item.full_name;
+                            },
+                            searchItems: function() {
+                                return this.patients.filter(i =>
+                                    JSON.stringify(i).toLowerCase().includes(this.search.toLowerCase()))
+                            }
+                        }'>
+                        <input hidden type="text" name="patient_id" :value='selected.id' />
+
+                        <input x-model="search"
+                            x-on:focus="dropdown = true; "
+                            x-on:click.outside="dropdown = false"
+                            id="patient" type="text" autocomplete="off" class="form-control" name="patient" placeholder="Search Patients"/>
+
+                        <div class="form-control-icon">@svg('search')</div>
+                        <template x-if="dropdown">
+                            <ul class="dropdown-menu shadow position-absolute d-block mt-1 w-100">
+                                <template x-for="patient in searchItems" :key="patient.id">
+                                    <li @click='selectItem(patient)' class="dropdown-item btn" x-text="patient.full_name"></li>
+                                </template>
+                            </ul>
+                        </template>
                     </div>
                     <div class="list-group shadow z-index-2 position-absolute mt-1" id="patients_list"
                         style="display:none;"> </div>
@@ -167,14 +189,10 @@
 
             </div><!-- END OF FIRST ROW IN THE PAGE  -->
 
-
-
-
             <div class="row">
                 <div class="col">
-
-                    <table class="table   bg-white" id="SecondStep" style="display:none;">
-                        <thead style="  background-color:#4a3aae;  ">
+                    <table class="table bg-white" id="SecondStep" style="display:none;">
+                        <thead style="background-color:#4a3aae;  ">
                             <tr style=" background-color:#4a3aae; color:white;  border-radius:10px; font-weight:bold;   ">
                                 <th>Name</th>
                                 <th>Mobile</th>
@@ -220,8 +238,7 @@
                                     <td>{{ $PATIENT->nationality }} </td>
                                     <td>DOB </td>
                                     <td>{{ $PATIENT->gender }} </td>
-                                    <td>
-                                    </td>
+                                    <td></td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -229,7 +246,6 @@
 
                 </div>
             </div>
-
 
             <div class="row mt-2">
                 <div class="col d-flex justify-content-end">
@@ -245,17 +261,8 @@
                         data-bs-target="#large1" style="display:none;" onclick=" "> Booking Details </button>
                 </div>
             </div>
-
-
         </div><!-- END OF Card-body -->
     </div>
-
-
-
-
-
-
-
 
     <div class="modal fade text-left" id="large" tabindex="-1" aria-labelledby="myModalLabel17"
         style="display: none;" aria-hidden="true">
@@ -263,13 +270,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel17">Assign Tests to the selected patient</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-x">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
+                    <button type="button" class="btn-close" class="close" data-bs-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
                 <div class="modal-body">
@@ -282,7 +283,7 @@
                                     onclick="HideLiveSearch()" placeholder="Search Tests "
                                     onkeyup="AjaxSearch(this.value, true)" id="test_name_search" autocomplete="off">
                                 <div class="form-control-icon">
-                                    <i class="bi bi-search"></i>
+                                    @svg('search')
                                 </div>
                             </div>
                             <div class="list-group shadow z-index-2 position-absolute mt-1" id="tests_list"
@@ -323,7 +324,7 @@
                                                     class="form-check-input form-check-blue form-check-glow fs-5"
                                                     onclick="AssignTestToPatient({{ $test->id }} , '{{ $test->test_name }}'  , {{ $test->test_price }} )"
                                                     id="add_{{ $test->id }}">
-                                                <label class="form-check-label  fs-5" for="customColorCheck3">Add</label>
+                                                <label class="form-check-label fs-5" for="customColorCheck3">Add</label>
                                             </div>
                                         </div>
                                     </td>
@@ -356,13 +357,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel17">Booking Quotation</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-x">
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     </button>
                 </div>
                 <div class="modal-body">
@@ -404,23 +399,13 @@
             </div>
         </div>
     </div>
+@endsection
 
-
-
-
-
-
-
-
-
-
+@push('scripts')
     <script>
         let FINAL = '';
         let reservation = {};
         let test_total_price = 0;
-
-
-
 
         function HideLiveSearch() {
             document.getElementById('patients_list').style.display = 'none';
@@ -437,10 +422,9 @@
                 if (tests) {
 
                     document.getElementById('tests_list').style.display = '';
-                    xhr.open('get', "{{ url('/TestSearch?search=') }}" + str, true);
+                    xhr.open('get', "{{ url('/TestSearch') }}/" + str, true);
                     xhr.onload = function() {
                         var result = JSON.parse(this.responseText);
-                        console.log(result)
                         if (result == '') {
                             document.getElementById('tests_list').innerHTML =
                                 '<button type="button" class="list-group-item"  > No Result Found Yet </button> ';
@@ -460,11 +444,9 @@
                 } else {
 
                     document.getElementById('patients_list').style.display = '';
-                    xhr.open('get', "{{ url('/Patients/search') }}?q=" + str, true);
+                    xhr.open('get', "{{ url('/PatientSearch') }}/" + str, true);
                     xhr.onload = function() {
-                        var response = JSON.parse(this.responseText);
-                        var result = response.data;
-                        console.log(result);
+                        var result = JSON.parse(this.responseText);
                         if (result == '') {
                             document.getElementById('patients_list').innerHTML =
                                 '<button type="button" class="list-group-item "  > No Result Found Yet </button> ';
@@ -485,12 +467,6 @@
 
 
             }
-
-
-
-
-
-
 
         }
 
@@ -635,7 +611,7 @@
             document.getElementById('third_next_back').style.display = 'none';
             document.getElementById('third_next').style.display = 'none';
 
-            document.getElementById('second_circle' ).classList += ' completed';
+            document.getElementById('second_circle').classList += ' completed';
         }
 
 
@@ -658,4 +634,4 @@
 
         }
     </script>
-@endsection
+@endpush
