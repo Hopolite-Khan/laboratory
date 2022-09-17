@@ -12,12 +12,18 @@ class input extends Component
      * @return void
      */
     public $value;
+
     public $errors;
+
     public $label;
+
     public $id;
+
     public $type;
+
     public $options;
-    public function __construct($value = "", $errors = "", $label = "", $id = "", $type = "text", $options = "")
+
+    public function __construct($value = '', $errors = '', $label = '', $id = '', $type = 'text', $options = '')
     {
         $this->value = $value;
         $this->errors = $errors;

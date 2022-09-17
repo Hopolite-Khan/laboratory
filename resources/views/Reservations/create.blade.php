@@ -419,9 +419,6 @@
         let reservation = {};
         let test_total_price = 0;
 
-
-
-
         function HideLiveSearch() {
             document.getElementById('patients_list').style.display = 'none';
         }
