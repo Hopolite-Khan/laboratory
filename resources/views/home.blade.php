@@ -12,7 +12,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <button onclick="test">hello try </button>
+                    <div  x-data='{ open: false}'>
+                        <button class="btn btn-primary" @click="open = !open">open</button>
+                        <div x-show="open">
+                            content and article try
+                        </div>
+                        @svg('rings')
+                    </div>
                 </div>
             </div>
         </div>
