@@ -127,7 +127,7 @@
                                 <td x-text="item.dob"></td>
                                 <td x-text="item.gender"></td>
                                 <td>
-                                    <ul class="list-unstyled d-flex gap-1">
+                                    <ul class="list-unstyled d-flex gap-1 m-0">
                                         <li>
                                             <a :href="state.base_url + 'Create/' + item.id"
                                                 class="btn btn-outline-warning rounded-circle p-2 h-1 d-flex align-items-center">
@@ -144,7 +144,7 @@
                                             <button @click="state.deletePatient(item.id)"
                                                 class="btn btn-outline-danger rounded-circle p-2 h-1 d-flex align-items-center">
                                                 @svg('trash')
-                                                </butt>
+                                            </button>
                                         </li>
                                     </ul>
                                 </td>
