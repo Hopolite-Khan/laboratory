@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Auth::routes();
+ Auth::routes();
 
 Route::get('/', function () {
     return view('auth.login');
 });
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/QR', [App\Http\Controllers\HomeController::class, 'qr_index'])->name('QRIndex');
