@@ -101,7 +101,7 @@ final class ServiceAccount
     /**
      * @param array<string, string> $data
      */
-    public static function fromArray(array $data): self
+    private static function fromArray(array $data): self
     {
         if (!\array_key_exists('type', $data) || $data['type'] !== 'service_account') {
             throw new InvalidArgumentException(
