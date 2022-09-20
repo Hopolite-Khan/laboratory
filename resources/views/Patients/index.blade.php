@@ -35,7 +35,7 @@
                     console.log(this.response);
                 },
                 url: "/api/patients",
-                base_url: "{{ url('/Patients/') }}",
+                base_url: "{{ url('Patients') }}",
                 loading: false,
                 prev: "",
                 next: "",
@@ -129,13 +129,13 @@
                                 <td>
                                     <ul class="list-unstyled d-flex gap-1 m-0">
                                         <li>
-                                            <a :href="state.base_url + 'Create/' + item.id"
+                                            <a :href="state.base_url + '/Create/' + item.id"
                                                 class="btn btn-outline-warning rounded-circle p-2 h-1 d-flex align-items-center">
                                                 @svg('edit')
                                             </a>
                                         </li>
                                         <li>
-                                            <a :href="state.base_url + 'Profile/' + item.id"
+                                            <a :href="state.base_url + '/Profile/' + item.id"
                                                 class="btn btn-outline-success rounded-circle p-2 h-1 d-flex align-items-center">
                                                 @svg('eye')
                                             </a>
