@@ -16,13 +16,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/route-cache', function() {
+Route::get('/route-cache', function () {
     Artisan::call('route:cache');
     return 'Route cache cleared! <br> Routes cached successfully!';
 });
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/login-test', function () {
+    return view('login');
+});
+Route::post('/api/register', [App\Http\Controllers\Auth\RegisterController::class, 'store'])->name('register.user');
+// Route::middleware('auth:api')->group(function () {
+//     Route::apiResource('posts', PostController::class);
+// });
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/QR', [App\Http\Controllers\HomeController::class, 'qr_index'])->name('QRIndex');

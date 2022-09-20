@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use FirebaseToken;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
 {
@@ -23,7 +27,6 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-
     /**
      * Where to redirect users after registration.
      *
@@ -31,6 +34,12 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    /**
+     * Firebase ID token.
+     *
+     * @var string
+     */
+    private string $token;
     /**
      * Create a new controller instance.
      *
@@ -69,5 +78,28 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    public function store(Request $request)
+    {
+        dd($request);
+        $token = new FirebaseToken($request->bearerToken());
+
+        try {
+            $payload = $token->verify(config('services.firebase.project_id'));
+        } catch (\Exception $e) {
+            // return error response
+            return response($e);
+        }
+
+        $user = User::create([
+            'id' => $payload->user_id,
+            'email' => $payload->email,
+            'name' => $payload->name,
+            'avatar' => $payload->avatar,
+        ]);
+
+        return (new User($user))
+            ->response()
+            ->setStatusCode(200);
     }
 }
