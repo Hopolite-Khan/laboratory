@@ -23,13 +23,9 @@ Route::get('/route-cache', function () {
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('/login-test', function () {
-    return view('login');
-});
-Route::post('/api/register', [App\Http\Controllers\Auth\RegisterController::class, 'store'])->name('register.user');
-// Route::middleware('auth:api')->group(function () {
-//     Route::apiResource('posts', PostController::class);
-// });
+Route::get('/login-test', [App\Http\Controllers\FirebaseController::class, 'show'])->name('show.login');
+Route::post('/on-register', [App\Http\Controllers\FirebaseController::class, 'onRegister'])->name('register.user');
+
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/QR', [App\Http\Controllers\HomeController::class, 'qr_index'])->name('QRIndex');
