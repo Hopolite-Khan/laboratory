@@ -13,16 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Auth::routes();
+
+Auth::routes();
 
 Route::get('/', function () {
     return view('auth.login');
 });
 Route::middleware('auth')->group(function () {
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/QR', [App\Http\Controllers\HomeController::class, 'qr_index'])->name('QRIndex');
     Route::get('/Patients', [App\Http\Controllers\PatientController::class, 'index'])->name('GetPatient');
-    Route::get('/api/patients', [App\Http\Controllers\PatientController::class, 'getPatients'])->name('api.patients');
     Route::get('/Patients/Create/{id?}', [App\Http\Controllers\PatientController::class, 'create'])->name('PatientRegistration');
     Route::post('/Patients/Store', [App\Http\Controllers\PatientController::class, 'store'])->name('StorePatient');
     Route::patch('/Patients/Edit', [App\Http\Controllers\PatientController::class, 'edit'])->name('EditPatient');
@@ -38,7 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/Reservation/Delete/{id}', [App\Http\Controllers\ReservationController::class, 'destroy'])->name('DeleteReservation');
     Route::get('/ReservationBooking', [App\Http\Controllers\ReservationController::class, 'reservation_booking'])->name('ReservationBooking');
     Route::get('/PatientProfile/{id}', [App\Http\Controllers\ReservationController::class, 'view_patient_profile'])->name('PatientProfile');
-    Route::get('/Patients/Profile/{id}', [App\Http\Controllers\ReservationController::class, 'view_patient_profile'])->name('Patient.Profile');
     Route::get('/PatientProfile/PrintBarcode/{id}', [App\Http\Controllers\ReservationController::class, 'print_patient_barcode'])->name('PrintPatientsBarcode');
 
     Route::get('/Hospital', [App\Http\Controllers\HospitalController::class, 'index'])->name('GetHospital');

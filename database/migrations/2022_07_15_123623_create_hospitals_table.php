@@ -14,21 +14,22 @@ class CreateHospitalsTable extends Migration
     public function up()
     {
         // hospital_id
-        // hospital_name
-        // address
-        // status
+        // hospital_name 
+        // address 
+        // status 
         // created_at
-        // landmark
+        // landmark 
         // update_at
 
         Schema::create('hospitals', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name'); 
             $table->string('address');
             $table->string('status')->default('Active');
             $table->string('landmark')->nullable();
             $table->timestamps();
         });
+        
     }
 
     /**

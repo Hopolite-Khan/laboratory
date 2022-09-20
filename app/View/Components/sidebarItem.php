@@ -12,21 +12,14 @@ class sidebarItem extends Component
      * @return void
      */
     public $route;
-
     public $title;
-
     public $children;
-
     public $active;
-
-    public $icon;
-
-    public function __construct($icon = false, $title = 'title', $route = 'home', $children = false)
+    public function __construct($title = 'title', $route = 'home', $children = false)
     {
         $this->title = $title;
         $this->route = $route;
         $this->children = $children;
-        $this->icon = $icon;
     }
 
     /**

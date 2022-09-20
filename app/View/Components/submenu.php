@@ -12,9 +12,7 @@ class submenu extends Component
      * @return void
      */
     public $route;
-
     public $title;
-
     public function __construct($title = 'title', $route = 'home')
     {
         $this->title = $title;

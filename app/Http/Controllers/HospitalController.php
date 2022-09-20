@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hospital;
 use Illuminate\Http\Request;
+use App\Models\Hospital;
+use DB;
 
 class HospitalController extends Controller
 {
+
     public function index()
     {
-        return view('Hospital.index', ['HOSPITALS' => Hospital::all()]);
+        return view('Hospital.index', ['HOSPITALS' =>  Hospital::all()]);
     }
+
 
     public function create()
     {
@@ -26,19 +29,17 @@ class HospitalController extends Controller
         ]);
 
         Hospital::create($request->all());
-
         return redirect()->route('GetHospital')->with('success', 'New Patient Registered Successfully');
     }
 
+
     public function search(Request $request)
     {
-        if ($request->has('q')) {
+        if($request->has('q')) {
             $query = $request->get('q');
-            $data = Hospital::where('name', 'LIKE', "%$query%")->get();
-
+            $data = Hospital::where('name', 'LIKE' , "%$query%")->get();
             return response($data);
         }
-
         return response(Hospital::paginate(10));
     }
 }

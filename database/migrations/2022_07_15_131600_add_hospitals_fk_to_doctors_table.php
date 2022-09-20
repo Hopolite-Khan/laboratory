@@ -14,7 +14,7 @@ class AddHospitalsFkToDoctorsTable extends Migration
     public function up()
     {
         Schema::table('doctors', function (Blueprint $table) {
-            $table->foreign('hospital_id')->references('id')->on('hospitals')->onDelete('cascade')->OnUpdate('Cascade');
+            $table->foreign('hospital_id')->references('id')->on('hospitals')->onDelete('cascade')->OnUpdate('Cascade');   
         });
     }
 

@@ -14,7 +14,7 @@ class PatientsFkIdToLabTestTable extends Migration
     public function up()
     {
         Schema::table('lab_tests', function (Blueprint $table) {
-            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade')->OnUpdate('Cascade');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade')->OnUpdate('Cascade');            ;
         });
     }
 

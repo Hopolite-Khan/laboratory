@@ -13,11 +13,12 @@ class CreateReservationsTable extends Migration
      */
     public function up()
     {
+
         // reservation_id [PK]
-        // reservation_date
-        // reservation_type
+        // reservation_date 
+        // reservation_type 
         // status
-        // patient_id [FK]
+        // patient_id [FK] 
         // test_id [FK]
 
         Schema::create('reservations', function (Blueprint $table) {
@@ -25,8 +26,8 @@ class CreateReservationsTable extends Migration
             $table->string('reservation_type')->default('Normal Booking');
             $table->dateTime('reservation_date')->nullable();
             $table->string('status')->default('New');
-            $table->unsignedBigInteger('patient_id')->nullable(); // MUST BE FK
-            $table->unsignedBigInteger('lab_test_id')->nullable(); // MUST BE FK
+            $table->unsignedBigInteger('patient_id')->nullable(); // MUST BE FK 
+            $table->unsignedBigInteger('lab_test_id')->nullable(); // MUST BE FK 
             $table->timestamps();
         });
     }
