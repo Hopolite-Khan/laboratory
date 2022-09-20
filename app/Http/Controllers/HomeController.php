@@ -27,8 +27,8 @@ class HomeController extends Controller
 
 
     public function qr_index(){
-        return view('qr_code_index'); 
+        return view('qr_code_index');
     }
 
-    
+
 }
