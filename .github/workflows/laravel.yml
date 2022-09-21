@@ -34,4 +34,6 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: vendor/bin/phpunit
+      run: | 
+        sudo chmod 777 vendor/bin/phpunit
+        vendor/bin/phpunit
