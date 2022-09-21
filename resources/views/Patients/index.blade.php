@@ -43,6 +43,7 @@
                 patients: [],
                 links: [],
                 current_page: 1,
+                sortBy: "created_at",
                 csrf: "{{ csrf_token() }}",
                 setPrev() {
                     if (this.prev)
@@ -102,7 +103,7 @@
             <table class="table bg-white position-relative">
                 <thead class="bg-brand" x-ref="thead">
                     <tr>
-                        <th>Full Name</th>
+                        <th @click="">Full Name</th>
                         <th>Mobile</th>
                         <th>ID Type</th>
                         <th>Passport No.</th>
