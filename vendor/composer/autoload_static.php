@@ -608,7 +608,6 @@ class ComposerStaticInitb756c8a386156a5bc31b14d6cca0d754
         'App\\View\\Components\\paper' => __DIR__ . '/../..' . '/app/View/Components/paper.php',
         'App\\View\\Components\\plus' => __DIR__ . '/../..' . '/app/View/Components/plus.php',
         'App\\View\\Components\\remove' => __DIR__ . '/../..' . '/app/View/Components/remove.php',
-        'App\\View\\Components\\sidebarItem' => __DIR__ . '/../..' . '/app/View/Components/sidebarItem.php',
         'App\\View\\Components\\submenu' => __DIR__ . '/../..' . '/app/View/Components/submenu.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',
