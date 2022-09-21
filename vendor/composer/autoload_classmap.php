@@ -52,7 +52,6 @@ return array(
     'App\\View\\Components\\paper' => $baseDir . '/app/View/Components/paper.php',
     'App\\View\\Components\\plus' => $baseDir . '/app/View/Components/plus.php',
     'App\\View\\Components\\remove' => $baseDir . '/app/View/Components/remove.php',
-    'App\\View\\Components\\sidebarItem' => $baseDir . '/app/View/Components/sidebarItem.php',
     'App\\View\\Components\\submenu' => $baseDir . '/app/View/Components/submenu.php',
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Cors.php',
     'Asm89\\Stack\\CorsService' => $vendorDir . '/asm89/stack-cors/src/CorsService.php',
