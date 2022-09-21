@@ -3,14 +3,14 @@
 
 <style>
     .btn-hoover {
-        width:100%; 
+        width:100%;
         font-weight:bold;
         background-color:rgba(125,64,244,1);
         border:3px solid rgba(125,64,244,1);
         color:white
     }
-    .btn-hoover:hover { 
-        background-color:white; 
+    .btn-hoover:hover {
+        background-color:white;
         color:rgba(125,64,244,1);
         border:3px solid rgba(125,64,244,1);
     }
@@ -18,7 +18,7 @@
 </style>
 
 
-
+<x-alert></x-alert>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-5 ">
@@ -83,7 +83,7 @@
                                     {{ __('Login') }}
                                 </button>
 
-                              
+
                             </div>
                         </div>
 
@@ -94,7 +94,7 @@
                                         {{ __(" Don't have a account ? Sign up ") }}
                                     </label>
 
-                              
+
                             </div>
                         </div>
 

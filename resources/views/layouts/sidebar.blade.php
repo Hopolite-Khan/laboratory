@@ -23,10 +23,10 @@
                 <ul class="menu">
                     <li class="sidebar-title">Menu</li>
 
-                    <x-sidebar-item route="home" title="Dashboard" />
-                    <x-sidebar-item route="ReservationBooking" title='Reservation' />
+                    <x-sidebaritem route="home" title="Dashboard" />
+                    <x-sidebaritem route="ReservationBooking" title='Reservation' />
 
-                    <x-sidebar-item children route="New Booking">
+                    <x-sidebaritem children route="New Booking">
 
                         <a href="#" class='sidebar-link  '>
                             <i class="bi bi-bookmark-fill"></i> <span> {{ __('New Booking') }} </span>
@@ -37,9 +37,9 @@
                             <x-submenu route="ReservationsRegistration" title="Old patient" />
                             <x-submenu route="ReservationsRegistration" title="Company associated" />
                         </ul>
-                    </x-sidebar-item>
+                    </x-sidebaritem>
 
-                    <x-sidebar-item children route="SimpleOperations">
+                    <x-sidebaritem children route="SimpleOperations">
                         <a href="#" class='sidebar-link'>
                             <x-operation />
                             <span>Sample Opreations</span>
@@ -49,9 +49,9 @@
                                 <a href="">option1</a>
                             </li>
                         </ul>
-                    </x-sidebar-item>
+                    </x-sidebaritem>
 
-                    <x-sidebar-item children route="Registeration">
+                    <x-sidebaritem children route="Registeration">
                         <a href="#" class='sidebar-link '>
                             <svg width="24" height="24" class="bi" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -66,9 +66,9 @@
                             <x-submenu route="LabTest" title="Register Lab Tests" />
                             <x-submenu route="GetHospital" title="Register Hospitals" />
                         </ul>
-                    </x-sidebar-item>
+                    </x-sidebaritem>
 
-                    <x-sidebar-item children route="Report">
+                    <x-sidebaritem children route="Report">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-pen-fill"></i>
                             <span>Reports</span>
@@ -103,7 +103,7 @@
                                 <a href=""> Outsource Monthly Report </a>
                             </li>
                         </ul>
-                    </x-sidebar-item>
+                    </x-sidebaritem>
 
                     <li class="sidebar-item   ">
                         <a href="#" class='sidebar-link'>
