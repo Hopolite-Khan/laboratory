@@ -19,18 +19,25 @@
         tr{
             border-bottom-width: 0.01rem;
         }
+        .place-center {
+            place-items: center;
+        }
         .s-1 {
             --size: 1rem;
             height: var(--size);
             width: var(--size);
+        }
+        .flip-right {
+            rotate: 180deg;
+        }
+        .flip-left {
+            rotate: -180deg;
         }
     </style>
     @stack('styles')
 </head>
 
 <body>
-
-
     @include('layouts.sidebar')
 
     <div id="main" class='layout-navbar'>

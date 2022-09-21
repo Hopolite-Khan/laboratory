@@ -13,9 +13,16 @@ class PatientController extends Controller
     }
 
 
-    public function getPatients()
+    public function getPatients(Request $request)
     {
-        return response(Patient::paginate(10));
+        $order = $request->query->get('order') ?? "updated_at,desc";
+        $search = $request->query->get('search') ?? false;
+        $limit  = $request->query->get('limit') ?? 10;
+        list($orderBy, $type) = explode(',', $order);
+        if($search) {
+            return response(Patient::where('full_name', 'LIKE', "%$search%")->orderBy($orderBy,$type ?? 'desc'))->paginate($limit);
+        }
+        return response(Patient::orderBy($orderBy, $type ?? 'desc')->paginate($limit));
     }
     public function create($id = null)
     {
