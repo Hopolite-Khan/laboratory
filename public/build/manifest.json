@@ -1,0 +1,12 @@
+{
+  "resources/scripts/main.ts": {
+    "file": "assets/main.9470b65c.js",
+    "src": "resources/scripts/main.ts",
+    "isEntry": true
+  },
+  "resources/css/tailwind.css": {
+    "file": "assets/tailwind.179954eb.css",
+    "src": "resources/css/tailwind.css",
+    "isEntry": true
+  }
+}
