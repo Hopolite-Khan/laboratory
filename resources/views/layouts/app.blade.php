@@ -138,7 +138,7 @@
             </div>
         </footer>
         @stack('scripts')
-        <script src="{{ vite_asset('assets/js/app.js') }}"></script>
+        <script src="{{ asset('assets/js/app.js') }}"></script>
 
 </body>
 
