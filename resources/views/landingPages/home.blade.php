@@ -2,6 +2,6 @@
 @section('content')
 <section>
     {{__('welcome')}}
-    <x-alert>hello</x-alert>
+    <x-alert children="test">hello</x-alert>
 </section>
 @endsection
