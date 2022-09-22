@@ -36,8 +36,8 @@ Route::post('/on-register', [App\Http\Controllers\FirebaseController::class, 'on
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/QR', [App\Http\Controllers\HomeController::class, 'qr_index'])->name('QRIndex');
-    Route::get('/Patients', [App\Http\Controllers\PatientController::class, 'index'])->name('GetPatient');
-    Route::get('/api/patients', [App\Http\Controllers\PatientController::class, 'getPatients'])->name('api.patients');
+    Route::get('/', [App\Http\Controllers\PatientController::class, 'index'])->name('GetPatient');
+    Route::get('/api/patPatientsients', [App\Http\Controllers\PatientController::class, 'getPatients'])->name('api.patients');
     Route::get('/Patients/Create/{id?}', [App\Http\Controllers\PatientController::class, 'create'])->name('PatientRegistration');
     Route::post('/Patients/Store', [App\Http\Controllers\PatientController::class, 'store'])->name('StorePatient');
     Route::patch('/Patients/Edit', [App\Http\Controllers\PatientController::class, 'edit'])->name('EditPatient');

@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href=" {{ asset('assets/css/main/app.css') }} ">
     <link rel="stylesheet" href=" {{ asset('assets/css/main/app-dark.css') }} ">
+
     <style>
         :root{
             font-size: 16px;
@@ -60,7 +61,6 @@
         }
     </style>
     @stack('styles')
-    @vite
 </head>
 
 <body>

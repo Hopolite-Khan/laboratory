@@ -26,7 +26,7 @@
                     <x-sidebaritem route="home" title="Dashboard" />
                     <x-sidebaritem route="ReservationBooking" title='Reservation' />
 
-                    <x-sidebaritem children route="New Booking">
+                    <x-sidebaritem children route="NewBooking">
 
                         <a href="#" class='sidebar-link  '>
                             <i class="bi bi-bookmark-fill"></i> <span> {{ __('New Booking') }} </span>
@@ -61,7 +61,7 @@
                             </svg>
                             <span>Registeration</span>
                         </a>
-                        <ul class="submenu ">
+                        <ul class="submenu">
                             <x-submenu route="PatientRegistration" title="Register Patients" />
                             <x-submenu route="LabTest" title="Register Lab Tests" />
                             <x-submenu route="GetHospital" title="Register Hospitals" />
