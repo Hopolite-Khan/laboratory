@@ -1,7 +1,7 @@
 <li @class([
     'sidebar-item',
     'active' => Route::currentRouteName() === $route,
-    'has-sub' => $children
+    'has-sub' => $children ?? false,
 ])>
     @if (!$children)
         <a href="{{ route($route) }}" class='sidebar-link'>
