@@ -27,11 +27,36 @@
             height: var(--size);
             width: var(--size);
         }
+        .lh-0 {
+            line-height: 0;
+        }
         .flip-right {
             rotate: 180deg;
         }
         .flip-left {
             rotate: -180deg;
+        }
+        .pointer {
+            cursor: pointer;
+        }
+        .arrow {
+            opacity: 0.1;
+            cursor: pointer;
+            line-height: 0;
+            --size: 10px;
+            width: var(--size);
+            height: var(--size);
+            display: grid;
+            place-items: center;
+            color: white;
+            transition: all 0.3s ease-in-out;
+        }
+        .arrow:hover {
+            opacity: .9;
+            transition: all 0.3s ease-in-out;
+        }
+        .active-arrow {
+            opacity: 1;
         }
     </style>
     @stack('styles')

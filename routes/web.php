@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +22,12 @@ Route::get('/route-cache', function () {
     Artisan::call('route:cache');
     return 'Route cache cleared! <br> Routes cached successfully!';
 });
-Route::get('/', function () {
+Route::get('/optimize', function () {
+    Artisan::call('optimize');
+    return 'optimize! <br> Routes cached successfully!';
+});
+Route::get('/', [HomeController::class,'index'])->name('landingPages.home');
+Route::get('/login', function () {
     return view('auth.login');
 });
 Route::get('/login-test', [App\Http\Controllers\FirebaseController::class, 'show'])->name('show.login');
