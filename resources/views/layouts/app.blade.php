@@ -60,6 +60,7 @@
         }
     </style>
     @stack('styles')
+    @vite
 </head>
 
 <body>
@@ -137,7 +138,7 @@
             </div>
         </footer>
         @stack('scripts')
-        <script src="{{ asset('assets/js/app.js') }}"></script>
+        <script src="{{ vite_asset('assets/js/app.js') }}"></script>
 
 </body>
 

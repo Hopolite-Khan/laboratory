@@ -5,7 +5,7 @@ import laravel from 'vite-plugin-laravel'
 
 export default defineConfig({
 	plugins: [
-		laravel(['resources/sass/main.scss'],{
+		laravel({
 			postcss: [
 				autoprefixer(),
 			],
