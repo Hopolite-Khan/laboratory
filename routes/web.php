@@ -27,9 +27,9 @@ Route::get('/optimize', function () {
     return 'optimize! <br> Routes cached successfully!';
 });
 Route::get('/', [HomeController::class,'index'])->name('landingPages.home');
-Route::get('/login', function () {
+Route::get('/signin', function () {
     return view('auth.login');
-});
+})->name('signin');
 Route::get('/login-test', [App\Http\Controllers\FirebaseController::class, 'show'])->name('show.login');
 Route::post('/on-register', [App\Http\Controllers\FirebaseController::class, 'onRegister'])->name('register.user');
 
