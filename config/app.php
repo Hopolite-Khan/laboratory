@@ -14,7 +14,16 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-
+    'supported_locales' => [
+        'en' => [
+            'name' => 'English',
+            'dir'  => 'ltr',
+        ],
+        'ar' => [
+            'name' => 'Arabic',
+            'dir'  => 'rtl'
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -178,6 +187,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         // Kreait\Laravel\Firebase\ServiceProvider::class,
         App\Providers\FirebaseServiceProvider::class,
+        App\Providers\LocaleServiceProvider::class
     ],
 
     /*

@@ -1,4 +1,7 @@
 <?php
 return [
-    "welcome" => "خوش آمدید"
+    "welcome" => "خوش آمدید",
+    "about-us" => "درباره ما",
+    "contact-us" => "تماس با ما",
+    "home" => "خانه"
 ];

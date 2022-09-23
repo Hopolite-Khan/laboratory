@@ -26,7 +26,7 @@ Route::get('/optimize', function () {
     Artisan::call('optimize');
     return 'optimize! <br> Routes cached successfully!';
 });
-Route::get('/', [HomeController::class,'index'])->name('landingPages.home');
+Route::get('/{locale}', [HomeController::class,'index'])->name('landingPages.home');
 Route::get('/signin', function () {
     return view('auth.login');
 })->name('signin');

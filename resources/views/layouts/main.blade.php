@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{locale()->current()}}" dir="{{ locale()->dir()}}">
 
 <head>
     <script src="{{ asset('assets/js/alpine.min.js') }}" defer></script>
@@ -12,15 +12,9 @@
     @vite
 </head>
 
-<body dir="rtl">
+<body >
     <header >
-        <nav class="container navbar navbar-expand-lg navbar-primary bg-primary">
-            <ul class="">
-                <li>home</li>
-                <li>about us</li>
-                <li>contact us</li>
-            </ul>
-        </nav>
+        <x-navigation/>
         @yield('header')
 
     </header>

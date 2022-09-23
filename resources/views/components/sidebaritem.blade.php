@@ -5,7 +5,9 @@
 ])>
     @if (empty($children))
         <a href="{{ route($route) }}" class='sidebar-link'>
-            <i class="bi bi-grid-fill"></i>
+            @isset($icon)
+                @svg($icon)
+            @endisset
             <span>{{ __($title) }}</span>
         </a>
     @else

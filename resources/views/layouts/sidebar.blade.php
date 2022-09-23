@@ -3,7 +3,7 @@
         <div class="sidebar-wrapper active ps ps--active-y ">
 
             <div class="sidebar-header position-relative">
-
+                <div id="logo"></div>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="logo">
                         <x-logo />
@@ -23,16 +23,17 @@
                 <ul class="menu">
                     <li class="sidebar-title">Menu</li>
 
-                    <x-sidebaritem route="home" title="Dashboard" />
+                    <x-sidebaritem route="home" title="Dashboard" icon="graph" />
+
                     <x-sidebaritem route="ReservationBooking" title='Reservation' />
 
                     <x-sidebaritem children route="NewBooking">
 
-                        <a href="#" class='sidebar-link  '>
-                            <i class="bi bi-bookmark-fill"></i> <span> {{ __('New Booking') }} </span>
+                        <a href="#" class='sidebar-link'>
+                            @svg('bookmark') <span> {{ __('New Booking') }} </span>
                         </a>
 
-                        <ul class="submenu ">
+                        <ul class="submenu">
                             <x-submenu route="ReservationsRegistration" title="New patient" />
                             <x-submenu route="ReservationsRegistration" title="Old patient" />
                             <x-submenu route="ReservationsRegistration" title="Company associated" />
@@ -41,7 +42,7 @@
 
                     <x-sidebaritem children route="SimpleOperations">
                         <a href="#" class='sidebar-link'>
-                            <x-operation />
+                            @svg('operations')
                             <span>Sample Opreations</span>
                         </a>
                         <ul class="submenu ">
@@ -53,12 +54,7 @@
 
                     <x-sidebaritem children route="Registeration">
                         <a href="#" class='sidebar-link '>
-                            <svg width="24" height="24" class="bi" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6.455 19L2 22.5V4C2 3.73478 2.10536 3.48043 2.29289 3.29289C2.48043 3.10536 2.73478 3 3 3H21C21.2652 3 21.5196 3.10536 21.7071 3.29289C21.8946 3.48043 22 3.73478 22 4V18C22 18.2652 21.8946 18.5196 21.7071 18.7071C21.5196 18.8946 21.2652 19 21 19H6.455ZM11 10H8V12H11V15H13V12H16V10H13V7H11V10Z"
-                                    fill="#7C8DB5" />
-                            </svg>
+                            @svg('plus')
                             <span>Registeration</span>
                         </a>
                         <ul class="submenu">
@@ -70,7 +66,7 @@
 
                     <x-sidebaritem children route="Report">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-pen-fill"></i>
+                            @svg('icons/pen-fill')
                             <span>Reports</span>
                         </a>
                         <ul class="submenu ">
@@ -137,7 +133,7 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-item   ">
+                    <li class="sidebar-item">
                         <a href="{{ route('Reservation') }}" class='sidebar-link  '>
                             <svg width="501" height="512" viewBox="0 0 501 512" class="bi" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
