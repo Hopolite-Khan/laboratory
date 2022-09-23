@@ -4,7 +4,7 @@
  *
  * @return App\Locale
  */
-function locale()
+function i18n()
 {
-    return app()->make(App\Locale::class);
+    return app()->make(App\i18n::class);
 }

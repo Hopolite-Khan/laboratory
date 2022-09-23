@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Locale;
+use App\i18n;
 use Illuminate\Support\ServiceProvider;
 
 class LocaleServiceProvider extends ServiceProvider
@@ -14,8 +14,8 @@ class LocaleServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(Locale::class, function ($app) {
-            return new Locale($app);
+        $this->app->singleton(i18n::class, function ($app) {
+            return new i18n($app);
         });
     }
 

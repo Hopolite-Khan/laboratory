@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Locale
+class i18n
 {
     /**
      * Cached copy of the configured supported locales
