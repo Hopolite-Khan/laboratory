@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\i18n;
+use App\i18n as i18n;
 use Illuminate\Support\ServiceProvider;
 
 class LocaleServiceProvider extends ServiceProvider
