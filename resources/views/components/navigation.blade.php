@@ -1,6 +1,6 @@
 <nav class="container navbar navbar-expand-lg navbar-primary bg-primary d-flex flex-column p-0">
     <ul class="topbar d-flex justify-content-between w-100 py-3">
-        <li class="h-100 d-grid place-center"><a href="/"><img src="{{ asset('img/logo-white.png')}}" class="h-w" style="--h: 2rem;--w:auto"/></a></li>
+        <li class="h-100 d-grid place-center"><a href="/"><img src="{{ asset('img/logo.png')}}" height="2rem" class="h-w logo" style="--h: 2rem;--w:auto"/></a></li>
         <li>
             <ul class="d-flex gap-3">
                 <li class="form-group position-relative has-icon-right text-primary">
