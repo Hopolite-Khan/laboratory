@@ -1,15 +1,16 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+// @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap");
 // Variables
-@import 'variables';
+@import "variables";
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 html:lang(en) body {
-    font-family: 'Nunito';
+    font-family: "Nunito";
 }
 html:lang(ar) body {
-    font-family: 'Noto Sans Arabic';
+    font-family: "Almarai", sans-serif;
 }
 .h-1 {
     height: 1rem;
@@ -49,6 +50,9 @@ html:lang(ar) body {
 .bg-primary {
     color: white;
 }
+.text-light-primary {
+    color: $light-primary;
+}
 .bg-dark-primary {
     background-color: $dark-primary;
 }
@@ -60,7 +64,7 @@ html:lang(ar) body {
     top: 0;
     right: 0;
     color: inherit;
-    transform: translate(50%,50%);
+    transform: translate(50%, 50%);
     margin-inline: 1.3rem;
     display: grid;
     place-items: center;
@@ -84,7 +88,7 @@ nav > ul {
     color: white;
     font-size: 1.2rem;
 }
-:root{
+:root {
     font-size: 16px;
 }
 .place-center {
@@ -110,7 +114,7 @@ nav > ul {
     --pr: var(--px);
     --pt: var(--py);
     --pb: var(--py);
-    padding: var( --pt) var(--pr) var(--pb) var(--pl);
+    padding: var(--pt) var(--pr) var(--pb) var(--pl);
 }
 input::placeholder {
     color: $primary !important;
@@ -128,4 +132,54 @@ a:hover {
     opacity: 0.7 !important;
     color: #fff !important;
     transition: all 0.3s ease-in-out;
+}
+.hero {
+    position: relative;
+}
+.z-1 {
+    z-index: 10;
+}
+.z-2 {
+    z-index: 20;
+}
+.align-full {
+    width: 100vw;
+    position: relative !important;
+    left: 50%;
+    right: 50%;
+    margin-left: -50.7vw;
+    margin-right: -50.7vw;
+}
+.h7 {
+    font-size: 0.7rem;
+}
+.pulse-button {
+    position: relative;
+    box-shadow: 0 0 0 0 #853b4b;
+    cursor: pointer;
+    -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+    animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+.heart-btn {
+    opacity: 0.5;
+    transition: all 0.3s ease-in-out;
+    margin: 1rem;
+    color: $secondary;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+.heart-btn:hover {
+    opacity: 1;
+    color: $primary;
+    transition: all .3s ease-in-out;
+}
+@-webkit-keyframes pulse {to {box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);}}
+@-moz-keyframes pulse {to {box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);}}
+@-ms-keyframes pulse {to {box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);}}
+@keyframes pulse {to {box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);}}
+.bg-position-center {
+    background-position: 50% 50%;
 }
