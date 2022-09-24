@@ -5,4 +5,5 @@ return [
     "contact-us" => "contact us",
     "home" => "home",
     "search" => "search",
+    "pcr" => "PCR Test",
 ];

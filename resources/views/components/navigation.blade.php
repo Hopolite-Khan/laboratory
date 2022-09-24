@@ -25,7 +25,12 @@
         <li class="position-absolute end-0">
             @svg('icons/house-fill', ['width' => '2rem', 'height' => '2rem', 'fill' => '#fff'])
         </li>
-        <li>{{__('home.about-us')}}</li>
+        <li>
+            <a href="/pcr-test" class="reset display flow items" style="--d: grid; --f: row;">
+                <span>@svg('pcr_test', ['width' => '2rem', 'height' => '2rem'])</span>
+                <span class="fs" style="--fs: .8rem;">{{__('home.pcr')}}</span>
+            </a>
+        </li>
         <li>{{__('home.contact-us')}}</li>
     </ul>
 </nav>

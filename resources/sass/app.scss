@@ -16,7 +16,26 @@
 .color-brand {
     color: $primary;
 }
-
+.fs {
+    --fs: 1rem;
+    font-size: var(--fs);
+}
+.display {
+    --d: flex;
+    display: var(--d);
+}
+.flow {
+    --f: column;
+    grid-auto-flow: var(--f);
+    flex-direction: var(--f);
+}
+.items {
+    --ji: center;
+    justify-items: var(--ji);
+}
+.reset {
+    all: unset;
+}
 .btn-flex {
     display: flex;
     align-items: center;

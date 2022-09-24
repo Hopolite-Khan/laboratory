@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'voku\\' => array($vendorDir . '/voku/portable-ascii/src/voku'),
-    'Yosymfony\\ResourceWatcher\\' => array($vendorDir . '/yosymfony/resource-watcher/src'),
     'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'TijsVerkoyen\\CssToInlineStyles\\' => array($vendorDir . '/tijsverkoyen/css-to-inline-styles/src'),
@@ -44,15 +43,6 @@ return array(
     'Spatie\\FlareClient\\' => array($vendorDir . '/spatie/flare-client-php/src'),
     'Spatie\\Backtrace\\' => array($vendorDir . '/spatie/backtrace/src'),
     'Sabberworm\\CSS\\' => array($vendorDir . '/sabberworm/php-css-parser/src'),
-    'React\\Stream\\' => array($vendorDir . '/react/stream/src'),
-    'React\\Socket\\' => array($vendorDir . '/react/socket/src'),
-    'React\\Promise\\Timer\\' => array($vendorDir . '/react/promise-timer/src'),
-    'React\\Promise\\' => array($vendorDir . '/react/promise/src'),
-    'React\\EventLoop\\' => array($vendorDir . '/react/event-loop/src'),
-    'React\\Dns\\' => array($vendorDir . '/react/dns/src'),
-    'React\\Cache\\' => array($vendorDir . '/react/cache/src'),
-    'Ratchet\\RFC6455\\' => array($vendorDir . '/ratchet/rfc6455/src'),
-    'Ratchet\\' => array($vendorDir . '/cboden/ratchet/src/Ratchet'),
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
     'Ramsey\\Collection\\' => array($vendorDir . '/ramsey/collection/src'),
     'Psy\\' => array($vendorDir . '/psy/psysh/src'),
@@ -109,7 +99,6 @@ return array(
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
     'BladeUI\\Icons\\' => array($vendorDir . '/blade-ui-kit/blade-icons/src'),
     'Barryvdh\\DomPDF\\' => array($vendorDir . '/barryvdh/laravel-dompdf/src'),
-    'BangNokia\\ServeLiveReload\\' => array($vendorDir . '/bangnokia/laravel-serve-livereload/src'),
     'Asm89\\Stack\\' => array($vendorDir . '/asm89/stack-cors/src'),
     'App\\' => array($baseDir . '/app'),
 );

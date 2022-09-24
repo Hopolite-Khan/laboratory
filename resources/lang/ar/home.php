@@ -5,4 +5,5 @@ return [
     "contact-us" => "تماس با ما",
     "home" => "خانه",
     "search" => "بحث",
+    "pcr" => "فحص PCR",
 ];

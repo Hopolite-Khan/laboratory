@@ -1,4 +1,7 @@
 <?php
+
+use App\Services\Locale;
+
 /**
  * Retrieve our Locale instance
  *
@@ -6,5 +9,5 @@
  */
 function i18n()
 {
-    return app()->make(App\i18n::class);
+    return app()->make(Locale::class);
 }
