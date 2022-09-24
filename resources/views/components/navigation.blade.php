@@ -1,6 +1,6 @@
 <nav class="container navbar navbar-expand-lg navbar-primary bg-primary d-flex flex-column p-0">
     <ul class="topbar d-flex justify-content-between w-100 py-3">
-        <li><img src="{{ asset('img/logo-white.png')}}" class="h-w" style="--h: 2rem;--w:auto"/></li>
+        <li><a href="/"><img src="{{ asset('img/logo-white.png')}}" class="h-w" style="--h: 2rem;--w:auto"/></a></li>
         <li>
             <ul class="d-flex gap-3">
                 <li class="form-group position-relative has-icon-right text-primary">
@@ -22,8 +22,8 @@
         </li>
     </ul>
     <ul class="bottombar position-relative d-flex justify-content-center h-w full-bleed py-2 bg-dark-primary text-white" style="--w: 100%;">
-        <li class="position-absolute end-0">
-            @svg('icons/house-fill', ['width' => '2rem', 'height' => '2rem', 'fill' => '#fff'])
+        <li class="position-absolute end-0 d-grid top-0 h-100 place-center">
+            <a href="/">@svg('icons/house-fill', ['width' => '2rem', 'height' => '2rem', 'fill' => '#fff'])</a>
         </li>
         <li>
             <a href="/pcr-test" class="reset d-grid flow items" style="--f: row;">
@@ -45,7 +45,7 @@
         </li>
         <li>
             <a href="/homevisit" class="reset d-grid flow items" style="--f: row;">
-                <span>@svg('hospital', ['width' => '2rem', 'height' => '2rem'])</span>
+                <span>@svg('medical-doctor', ['width' => '2rem', 'height' => '2rem'])</span>
                 <span class="fs" style="--fs: .8rem;">{{__('home.home visit')}}</span>
             </a>
         </li>

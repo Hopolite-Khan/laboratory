@@ -1,11 +1,16 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500&display=swap');
 // Variables
 @import 'variables';
-
 // Bootstrap
-// @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
+html:lang(en) body {
+    font-family: 'Nunito';
+}
+html:lang(ar) body {
+    font-family: 'Noto Sans Arabic';
+}
 .h-1 {
     height: 1rem;
     width: 1rem;
@@ -114,4 +119,13 @@ input::placeholder {
 button {
     all: unset;
 }
-
+a {
+    transition: all 0.5s ease-in-out;
+    opacity: 1 !important;
+}
+a:hover {
+    cursor: pointer;
+    opacity: 0.7 !important;
+    color: #fff !important;
+    transition: all 0.3s ease-in-out;
+}
