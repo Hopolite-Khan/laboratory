@@ -26,11 +26,28 @@
             @svg('icons/house-fill', ['width' => '2rem', 'height' => '2rem', 'fill' => '#fff'])
         </li>
         <li>
-            <a href="/pcr-test" class="reset display flow items" style="--d: grid; --f: row;">
+            <a href="/pcr-test" class="reset d-grid flow items" style="--f: row;">
                 <span>@svg('pcr_test', ['width' => '2rem', 'height' => '2rem'])</span>
                 <span class="fs" style="--fs: .8rem;">{{__('home.pcr')}}</span>
             </a>
         </li>
-        <li>{{__('home.contact-us')}}</li>
+        <li>
+            <a href="/offers" class="reset d-grid flow items" style="--f: row;">
+                <span>@svg('icons/fire', ['width' => '2rem', 'height' => '2rem'])</span>
+                <span class="fs" style="--fs: .8rem;">{{__('home.offers')}}</span>
+            </a>
+        </li>
+        <li>
+            <a href="/hospitals" class="reset d-grid flow items" style="--f: row;">
+                <span>@svg('hospital', ['width' => '2rem', 'height' => '2rem'])</span>
+                <span class="fs" style="--fs: .8rem;">{{__('home.providers')}}</span>
+            </a>
+        </li>
+        <li>
+            <a href="/homevisit" class="reset d-grid flow items" style="--f: row;">
+                <span>@svg('hospital', ['width' => '2rem', 'height' => '2rem'])</span>
+                <span class="fs" style="--fs: .8rem;">{{__('home.home visit')}}</span>
+            </a>
+        </li>
     </ul>
 </nav>

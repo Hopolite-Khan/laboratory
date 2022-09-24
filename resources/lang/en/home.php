@@ -6,4 +6,8 @@ return [
     "home" => "home",
     "search" => "search",
     "pcr" => "PCR Test",
+    "offers" => "offers",
+    "providers" => "providers",
+    "home visit" => "home visit",
+
 ];

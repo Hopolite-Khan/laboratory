@@ -6,4 +6,7 @@ return [
     "home" => "خانه",
     "search" => "بحث",
     "pcr" => "فحص PCR",
+    "offers" => "العروض",
+    "providers" => "المختبرات",
+    "home visit" => "الزيارات المنزلية",
 ];

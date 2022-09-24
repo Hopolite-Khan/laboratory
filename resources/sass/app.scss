@@ -26,12 +26,12 @@
 }
 .flow {
     --f: column;
-    grid-auto-flow: var(--f);
-    flex-direction: var(--f);
+    grid-auto-flow: var(--f) !important;
+    flex-direction: var(--f) !important;
 }
 .items {
     --ji: center;
-    justify-items: var(--ji);
+    justify-items: var(--ji) !important;
 }
 .reset {
     all: unset;
