@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{i18n()->current()}}" dir="{{ i18n()->dir()}}">
+<html lang="{{ i18n()->current() }}" dir="{{ i18n()->dir() }}">
 
 <head>
     <script src="{{ asset('assets/js/alpine.min.js') }}" defer></script>
@@ -12,11 +12,10 @@
     @vite
 </head>
 
-<body >
-    <header >
-        <x-navigation/>
+<body>
+    <header>
+        <x-navigation />
         @yield('header')
-
     </header>
     <main class="container">
         @yield('content')
@@ -24,7 +23,7 @@
     <footer>
         @yield('footer')
     </footer>
+    @stack('scripts')
 </body>
-@stack('scripts')
 
 </html>

@@ -25,6 +25,26 @@
 .bg-primary {
     color: white;
 }
+.bg-dark-primary {
+    background-color: $dark-primary;
+}
+.has-icon-right {
+    position: relative;
+}
+.form-control-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: inherit;
+    transform: translate(50%,50%);
+    margin-inline: 1.3rem;
+    display: grid;
+    place-items: center;
+}
+.full-bleed {
+    box-shadow: 0 0 0 100vmax $dark-primary;
+    clip-path: inset(0 -100vmax);
+}
 header {
     background-color: $primary !important;
 }
@@ -50,5 +70,29 @@ nav > ul {
     --size: 1rem;
     height: var(--size);
     width: var(--size);
+}
+.h-w {
+    --w: auto;
+    --h: auto;
+    --s: auto;
+    height: var(--h, --s);
+    width: var(--w, --s);
+}
+.p {
+    --p: 0.3rem;
+    --px: 0.3rem;
+    --py: 0.3rem;
+    --pl: var(--px);
+    --pr: var(--px);
+    --pt: var(--py);
+    --pb: var(--py);
+    padding: var( --pt) var(--pr) var(--pb) var(--pl);
+}
+input::placeholder {
+    color: $primary !important;
+    opacity: 0.2;
+}
+button {
+    all: unset;
 }
 
