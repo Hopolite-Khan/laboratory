@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ i18n()->current() }}" dir="{{ i18n()->dir() }}">
+<html lang="{{ locale()->current() }}" dir="{{ locale()->dir() }}">
 
 <head>
     <script src="{{ asset('assets/js/alpine.min.js') }}" defer></script>

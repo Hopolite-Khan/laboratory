@@ -7,7 +7,7 @@ use App\Services\Locale;
  *
  * @return App\Locale
  */
-function i18n()
+function locale()
 {
     return app()->make(Locale::class);
 }
