@@ -2,16 +2,13 @@
 
 namespace App\Providers;
 
-use App\Models\User;
-use FirebaseToken;
+// use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AuthServiceProvider extends ServiceProvider
 {
     /**
-     * The policy mappings for the application.
+     * The model to policy mappings for the application.
      *
      * @var array<class-string, class-string>
      */
@@ -27,17 +24,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        Auth::viaRequest('firebase', function (Request $request) {
-            $token = $request->bearerToken();
 
-            try {
-                $payload = (new FirebaseToken($token))->verify(
-                    config('services.firebase.project_id')
-                );
-                return User::find($payload->user_id);
-            } catch (\Exception $e) {
-                return null;
-            }
-        });
+        //
     }
 }

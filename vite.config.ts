@@ -1,22 +1,21 @@
-import { defineConfig } from "vite";
-import autoprefixer from "autoprefixer";
-import laravel from "vite-plugin-laravel";
-import path from 'path';
-import purgecss from "@fullhuman/postcss-purgecss";
-
+import { defineConfig } from 'vite'
+import autoprefixer from 'autoprefixer'
+import purgecss from '@fullhuman/postcss-purgecss';
+import laravel from 'vite-plugin-laravel'
+import {resolve} from 'path';
 export default defineConfig({
     plugins: [
-        purgecss({
-            content: ['./**/*.blade.php']
-        }),
-        laravel({
-            postcss: [autoprefixer()],
-        }),
-    ],
+		laravel({
+			postcss: [
+				autoprefixer(),
+                purgecss({content: ['./**/*.blade.php']})
+			],
+		}),
+	],
     resolve: {
         alias: {
-          '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
-          '~axios': path.resolve(__dirname, 'node_modules/axios')
+            '~bootstrap': resolve(__dirname, 'node_modules/bootstrap'),
+            '~axios': resolve(__dirname, 'node_modules/axios')
         }
-      },
-});
+    }
+})

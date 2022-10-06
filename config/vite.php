@@ -15,9 +15,9 @@ return [
             'entrypoints' => [
                 'ssr' => 'resources/scripts/ssr.ts',
                 'paths' => [
+                    'resources/scss/main.scss',
                     'resources/scripts/main.ts',
-                    'resources/js/app.js',
-                    'resource/sass/app.scss'
+                    'resources/js/main.js',
                 ],
                 'ignore' => '/\\.(d\\.ts|json)$/',
             ],
@@ -30,7 +30,28 @@ return [
                 'key' => env('DEV_SERVER_KEY'),
                 'cert' => env('DEV_SERVER_CERT'),
             ],
-            'build_path' => 'build',
+            'build_path' => 'build/main',
+        ],
+        'app' => [
+            'entrypoints' => [
+                'ssr' => 'resources/scripts/ssr.ts',
+                'paths' => [
+                    'resources/scss/app.scss',
+                    'resources/scripts/app.ts',
+                    'resources/js/app.js',
+                ],
+                'ignore' => '/\\.(d\\.ts|json)$/',
+            ],
+            'dev_server' => [
+                'enabled' => true,
+                'url' => env('DEV_SERVER_URL', 'http://localhost:3333'),
+                'ping_before_using_manifest' => true,
+                'ping_url' => null,
+                'ping_timeout' => 1,
+                'key' => env('DEV_SERVER_KEY'),
+                'cert' => env('DEV_SERVER_CERT'),
+            ],
+            'build_path' => 'build/app',
         ],
     ],
 

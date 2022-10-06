@@ -40,9 +40,6 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'api' => [
-            'driver' => 'firebase',
-        ],
     ],
 
     /*

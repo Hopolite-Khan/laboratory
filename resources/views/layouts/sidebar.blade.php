@@ -23,7 +23,7 @@
                 <ul class="menu">
                     <li class="sidebar-title">Menu</li>
 
-                    <x-sidebaritem route="home" title="Dashboard" icon="graph" />
+                    <x-sidebaritem route="admin" title="Dashboard" icon="graph" />
 
                     <x-sidebaritem route="ReservationBooking" title='Reservation' />
 

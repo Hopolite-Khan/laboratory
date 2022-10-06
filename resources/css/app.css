@@ -1,0 +1,4 @@
+@import "~bootstrap/scss/bootstrap";
+ul, li {
+    all: unset;
+}

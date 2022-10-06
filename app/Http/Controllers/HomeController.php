@@ -12,18 +12,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index($locale)
+    public function index()
     {
-        if (!in_array($locale, ['en', 'ar'])) abort(404);
-        App::setlocale($locale);
-        $lab = [
+        // if (!in_array($locale, ['en', 'ar'])) abort(404);
+        // App::setlocale($locale);
+        $labs = collect([
             [
-                "feature" => asset('/img/tests-box-rtl.jpg'),
-                "title" => "home.tests box",
+                "title" => "test",
                 "description" => ""
             ]
-        ];
-        return view('landingPages.home');
+        ]);
+
+        return view('landingPages.home', ['labs' => $labs]);
     }
 
 
