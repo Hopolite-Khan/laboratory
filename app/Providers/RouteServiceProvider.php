@@ -34,10 +34,18 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')
+                ->prefix('admin')
                 ->group(base_path('routes/web.php'));
+
+            $this->mapMainRoutes();
+
         });
     }
-
+    protected function mapMainRoutes()
+    {
+        Route::middleware('web')
+                ->group(base_path('routes/main.php'));
+    }
     /**
      * Configure the rate limiters for the application.
      *

@@ -1,23 +1,38 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Nunito");
-// @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;700&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap");
 // Variables
 @import "variables";
 // Bootstrap
-@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/bootstrap.scss";
 
-html:lang(en) body {
+html body {
     font-family: "Nunito";
-}
-html:lang(ar) body {
-    font-family: "Almarai", sans-serif;
+    position: relative;
+    height: 100vh;
+    display: block;
 }
 
+:root {
+    font-size: 16px;
+}
+footer {
+    margin-top: auto;
+}
 .h-1 {
     height: 1rem;
     width: 1rem;
 }
+
+.z.one {
+    z-index: 10;
+}
+.z.two {
+    z-index: 20;
+}
+.z.three {
+    z-index: 20;
+}
+
 .bg-brand {
     background-color: $primary;
 }
@@ -75,24 +90,18 @@ html:lang(ar) body {
     box-shadow: 0 0 0 100vmax $dark-primary;
     clip-path: inset(0 -100vmax);
 }
-header {
-    background-color: $primary !important;
-}
-ul {
-    all: unset;
-}
-li {
-    all: unset;
-}
-nav > ul {
+#app {
+    min-height: 100vh;
     display: flex;
-    gap: 1rem;
-    color: white;
-    font-size: 1.2rem;
+    flex-direction: column;
 }
-:root {
-    font-size: 16px;
+ul,
+li,
+a,
+a:hover {
+    all: unset;
 }
+
 .place-center {
     place-items: center;
 }
@@ -125,16 +134,7 @@ input::placeholder {
 button {
     all: unset;
 }
-a {
-    transition: all 0.5s ease-in-out;
-    opacity: 1 !important;
-}
-a:hover {
-    cursor: pointer;
-    opacity: 0.7 !important;
-    color: #fff !important;
-    transition: all 0.3s ease-in-out;
-}
+
 .hero {
     position: relative;
 }
@@ -236,12 +236,6 @@ article b {
 .btn {
     text-transform: capitalize;
 }
-a {
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
 
 a.ry-link {
     text-transform: capitalize;
@@ -253,6 +247,7 @@ a.ry-link {
         border-radius: 10px;
         width: 0%;
         height: 1px;
+        right: 0;
         border-bottom: 3px solid #ccc;
         transition: all 0.3s ease-in-out;
     }

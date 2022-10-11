@@ -32,7 +32,9 @@ class PatientController extends Controller
     }
     public function create($id = null)
     {
-        $patient = Patient::find($id);
+        $patient = null;
+        if($id)
+            $patient = Patient::find($id);
 
         return view('Patients.create', ['patient' => $patient]);
     }

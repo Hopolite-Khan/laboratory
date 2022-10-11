@@ -30,26 +30,6 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
 
-        // dd($request->all());
-
-        // if (!function_exists('str_contains')) {
-        //     function str_contains($haystack, $needle) {
-        //         return $needle !== '' && mb_strpos($haystack, $needle) !== false;
-        //     }
-        // }
-        // Retrieve a piece of data from the session...
-        // $value = session('booking_type');
-
-        // // Specifying a default value...
-        // $value = session('key', 'default');
-
-        // Store a piece of data in the session...
-        // $value =  session(['patient_id' => $request->patient_id]);
-
-        // dd($request->session()->all());
-
-
-
         $Reserve = [];
         foreach ($request->except('_token') as $key => $value) {
             if (str_contains($key, "test_id_")) {
@@ -63,39 +43,10 @@ class ReservationController extends Controller
                     ]);
                 }
             }
-
-            //   echo $key . ' : ' . $value . '<br>';
-
         }
-
-
-        // $this->validate($request, [
-        //     'full_name' => 'required',
-        //     'passport_id' => 'required',
-        //     'mobile' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-        //  ]);
 
         Reservation::insert($Reserve); // Eloquent approach
 
-
-
-        // $request->session()->put('key', 'value');
-        // echo $request->patient_id;
-
-
-        // // $request->session()->flush();
-
-        // if(!$request->session()->has('patient_id') && !$request->session()->has('booking_type') ) {
-        //     $request->session()->put(['patient_id' => $request->patient_id , 'booking_type' => $request->booking_type ] );
-        // }
-
-        // $patient  = Patient::FindOrFail( $request->patient_id , ['full_name', 'mobile' , 'gender' , 'id' ]);
-        // $tests = LabTest::all( ['test_name', 'test_type' , 'id' ])->sortByDesc('id');
-        // // dd($pa->full_name);
-        // return view('Reservations.AssignTestPatient', [ 'PATIENTS' => $patient , 'TESTS' => $tests]);
-
-        // dd('no data!');
-        // Patient::create($request->all());
         return redirect()->route('Reservation')->with('success', 'New Reservations Registered Successfully');
     }
     public function reservation_booking()
@@ -103,6 +54,8 @@ class ReservationController extends Controller
         $patients = Patient::paginate(10);
         return view('Reservations.reservation_booking', ['patients' => $patients]);
     }
+
+
     public function view_patient_profile($id)
     {
         $patientID = $id;
@@ -127,4 +80,88 @@ class ReservationController extends Controller
         Reservation::destroy($id);
         return redirect()->route('Reservation')->with('success','it has been deleted successfully.');
     }
+
+    public function view_first_step(){
+        return view('Reservations.first_step');
+    }
+
+    public function process_first_step(Request $request){
+
+        $patients = [];
+        $patient = explode(',' , $request->patient_id[0]);
+
+        for ($index=0; $index < count($patient) ; $index++) {
+            array_push($patients ,  Patient::find($patient[$index]) );
+        }
+        return view('Reservations.second_step' ,
+        [
+            'booking_type' => $request->booking_type ,
+            'patients' => $patients ,
+            'tests' => LabTest::latest()->take(8)->get()
+        ]);
+    }
+
+    public function second_step(Request $request){
+
+        $Latest_RID = Reservation::orderBy('rid', 'desc')->limit(1)->pluck('rid');
+        if(is_null($Latest_RID)) $Latest_RID = [0] ;
+        $RID = sprintf('%06d', $Latest_RID[0] + 1) ;
+        $Reserve = [];
+        foreach ($request->except('_token') as $key => $value) {
+
+            $pid = explode('_' , $key);
+            $test_id = $value;
+
+            if (str_contains($key, "reserve_")) {
+                if (!empty($request[$key])) {
+                    array_push($Reserve, [
+                        'rid' => $RID ,
+                        'reservation_type' => 'Booking',
+                        'reservation_date' => Carbon::now()->toDateTimeString(),
+                        'patient_id' =>  $pid[1],
+                        'lab_test_id' =>  $test_id
+                    ]);
+                }// end of empty
+            }// end of str_contains
+        } // end of foreach
+
+        Reservation::insert($Reserve); // Eloquent approach
+        return redirect()->route('ThirdStep' , ['pid' => $pid[1] , 'test_id' => $test_id , 'rid' => $RID]);
+
+
+    } // end of second step
+
+    function third_step($pid , $test_id , $rid){
+
+        $reservations = DB::table('patients')
+        ->join('reservations', 'patients.id', '=', 'reservations.patient_id')
+        ->join('lab_tests', 'reservations.lab_test_id', '=', 'lab_tests.id')
+        ->select(
+            'patients.*',
+            'reservations.reservation_type',
+            'reservations.lab_test_id',
+            'reservations.status',
+            'reservations.patient_id as pid',
+            'reservations.rid',
+            'lab_tests.*')
+        ->where('reservations.rid' , '=' , sprintf('%06d', $rid))->get() ;
+
+         return view('Reservations.third_step', [ 'reservations' => $reservations ]);
+    }
+
+    function cancel_reservation(Request $request){
+        if($request->status == 'Cancel') {
+            Reservation::where('patient_id' , '=' , $request->pid)
+            ->where('lab_test_id' , '=' , $request->test_id)
+            ->update(['status'=>'Cancel']);
+            return redirect()->route('ThirdStep' , ['pid' => $request->pid , 'test_id' => $request->test_id , 'rid' => $request->rid]);
+        }
+        else return redirect()->back()->with('error' , 'Somthing went Wrong');
+
+    }
+
+    function recieve_payment(Request $request ){
+        dd($request->all());
+    }
+
 }

@@ -33,7 +33,7 @@
                     element?.classList?.toggle('active-arrow');
                     const url = new URL(this.url);
                     const query = url.searchParams;
-                    if(query.has('order') && query.get('order') === e){
+                    if (query.has('order') && query.get('order') === e) {
                         query.delete('order');
                         console.log('Order delete: ', query.get('order'));
                     } else {
@@ -120,7 +120,6 @@
     <div class="card mb-5 shadow" x-data="{ state: $store.state }" x-init="state.fetchPatients(state.url);
     $watch('$store.state.url', (value) => { state.fetchPatients(value) })" x-cloak>
         <div class="d-flex p-3">
-            <span x-html="state.url"></span>
 
             <div class="col-3 ms-auto">
                 <select class="form-select" x-model="state.limit" @change='(e) => state.setLimit(e)'>
@@ -131,7 +130,7 @@
                 </select>
             </div>
         </div>
-        <div class="table-responsive card-body h-100">
+        <div class="table-responsive card-body d-block h-100">
             <table class="table bg-white position-relative">
                 <thead class="bg-brand" x-ref="thead">
                     <tr>
@@ -151,10 +150,13 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <span x-show="state.loading"
-                    class="mx-auto position-absolute top-50 start-50 end-50 my-3">@svg('rings')</span>
-                <template x-if="!state.loading">
-                    <tbody>
+
+
+                <tbody>
+                    <tr>
+                        <td x-show="state.loading" class="text-center" colspan="8">@svg('rings')</td>
+                    </tr>
+                    <template x-if="!state.loading">
                         <template x-for="item in state.patients">
                             <tr>
                                 <td x-text="item.full_name" :title="item.full_name" class="text-truncate"
@@ -189,9 +191,10 @@
                                 </td>
                             </tr>
                         </template>
-                    </tbody>
-                </template>
+                    </template>
+                </tbody>
                 {{-- pagination --}}
+
                 <template x-if="!state.loading">
                     <tfoot class="border-0">
                         <tr class="border-0">

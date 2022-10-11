@@ -1,8 +1,8 @@
-// Build something cool. <3
-// Build something cool. <3
-import 'bootstrap'
-import Alpine from 'alpinejs'
+import {createApp} from 'vue';
+import AppLayout from './layout/App.vue'
+import router from './router/index.js';
+createApp(AppLayout)
+.use(router)
+.mount('#app')
 
-window.Alpine = Alpine
 
-Alpine.start()
