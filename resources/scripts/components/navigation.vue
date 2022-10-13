@@ -6,12 +6,12 @@ export default {
   computed: {
     button() {
       return {
-        primary: this.$route.name !== "Home",
+        "btn-outline-light": this.$route.name !== "Home",
         "btn-primary": this.$route.name === "Home",
       };
     },
-    navi() {
-      return { nav: this.$route.name !== "Home" };
+    navigation() {
+      return { "bg-primary": this.$route.name !== "Home" };
     },
     light() {
       return { light: this.$route.name !== "Home" };
@@ -25,47 +25,40 @@ export default {
 };
 </script>
 <template>
-  <nav class="d-flex py-2" :class="navi">
+  <nav class="d-flex" :class="navigation">
     <ul class="container d-flex align-items-center" style="gap: 2rem">
       <li>
         <router-link :to="{ name: 'Home' }">
           <img :src="Logo" id="logo" :class="light" />
         </router-link>
       </li>
-      <ul
-        class="navigation d-flex gap-3 align-items-center py-2 ms-auto px-4 rounded-pill"
-      >
+      <ul class="navigation d-flex gap-3 align-items-center ms-auto px-4 rounded-pill">
         <li>
-          <Link url="Home">Home</Link>
+          <Link class="d-flex h-100 py-3" url="Home">Home</Link>
         </li>
         <li>
-          <Link url="Labs">Labs</Link>
+          <Link class="d-flex h-100 py-3" url="Labs">Labs</Link>
         </li>
         <li>
-          <Link url="Services">Services</Link>
+          <Link class="d-flex h-100 py-3" url="Services">Services</Link>
         </li>
         <li>
-          <Link url="Appointment">Appointment</Link>
+          <Link class="d-flex h-100 py-3" url="Appointment">Appointment</Link>
         </li>
         <li>
-          <Link url="Contact">Contact</Link>
+          <Link class="d-flex h-100 py-3" url="Contact">Contact</Link>
         </li>
         <li>
-          <Link url="About">About</Link>
+          <Link class="d-flex h-100 py-3" url="About">About</Link>
         </li>
         <li class="ms-5">
-          <button class="btn rounded-pill px-3" :class="button">Log in</button>
+          <button class="btn rounded-pill px-3" :class="button">Log in &#11208;</button>
         </li>
       </ul>
     </ul>
   </nav>
 </template>
 <style>
-.nav {
-  background-image: linear-gradient(180deg, #54009941 -90%, #540099 140%);
-  border-radius: 0 0 30px 30px;
-}
-
 .primary {
   font-weight: bold;
   color: #fff;

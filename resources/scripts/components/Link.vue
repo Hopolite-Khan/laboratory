@@ -29,7 +29,7 @@ a.link:hover {
 a.link::after {
   content: "";
   position: absolute;
-  bottom: -50%;
+  bottom: 0;
   border-radius: 10px;
   width: 0%;
   height: 1px;
@@ -46,7 +46,7 @@ a.link:hover::after {
 a.active::after {
   content: "";
   position: absolute;
-  bottom: -50%;
+  bottom: 0%;
   border-radius: 10px;
   width: 100%;
   height: 1px;

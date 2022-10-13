@@ -6,26 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Laboratory Application')</title>
 
-    @vite('app')
+    @vite(["resources/scripts/app.js", "resources/scss/app.scss"])
     @stack('styles')
 </head>
 
-<body>
+<body x-data>
     @include('layouts.sidebar')
 
-    <div id="main" class='layout-navbar'>
+    <div id="main" :style="{ marginLeft: $store.app.open ? '300px' : '0'}" class='layout-navbar'>
         <header class='mb-3'>
-            <nav class="navbar navbar-expand navbar-light ">
+            <nav class="navbar navbar-expand navbar-light " >
                 <div class="container-fluid">
-                    <a href="#" class="burger-btn d-block">
-                        <i class="bi bi-justify fs-3"></i>
-                    </a>
-
+                    <button class="burger-btn d-block btn" @click="$store.app.toggleSidebar(); ">
+                        &#9776;
+                    </button>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
