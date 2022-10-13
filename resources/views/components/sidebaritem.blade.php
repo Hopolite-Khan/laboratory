@@ -1,17 +1,16 @@
 <li @class([
     'sidebar-item',
     'active' => Route::currentRouteName() === $route,
-    'has-sub' => $children
+    'has-sub' => !empty($children),
 ])>
-    @if (!$children)
+    @if (empty($children))
         <a href="{{ route($route) }}" class='sidebar-link'>
-            <i class="bi bi-grid-fill"></i>
+            @isset($icon)
+                @svg($icon)
+            @endisset
             <span>{{ __($title) }}</span>
         </a>
     @else
-    @if ($active)
-        true
-    @endif
         {{ $slot }}
     @endif
 </li>

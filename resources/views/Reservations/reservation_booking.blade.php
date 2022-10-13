@@ -40,7 +40,7 @@
     </div>
 
     <div class="card mb-5 shadow " style="background-color:">
-        <div class="card-body  table-responsive">
+        <div class="card-body table-responsive">
 
             <table class="table bg-white" id="searchTab">
                 <thead>
@@ -55,7 +55,7 @@
                     </tr>
                 </thead>
                 @foreach ($patients as $item)
-                    @if (count($item->reservations) > 0)
+                    @if ($item->reservations && count($item->reservations) > 0)
 
                         <tbody x-data="{ open: false }" style="border: none !important;">
                             <tr>
@@ -67,7 +67,7 @@
                                 </td>
                                 <td>{{ $item->mobile }} </td>
                                 <td>{{ $item->hospital->name }} </td>
-                                <td>{{ $item->reservations->sum('paid') }} </td>
+                                <td>{{ $item->reservations  }} </td>
                                 <td>{{ $item->status }} </td>
                                 <td>
                                     <ul class="d-flex gap-1 list-unstyled m-0">

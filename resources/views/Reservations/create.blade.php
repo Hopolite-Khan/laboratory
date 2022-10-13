@@ -129,10 +129,7 @@
         </div>
     </div>
 
-
-
-
-    <div class="card   mb-5 shadow ">
+    <div class="card mb-5 shadow ">
         <div class="card-body">
 
             <div class="row" id="FirstStep">
@@ -142,7 +139,7 @@
                             placeholder="Search Patients " onkeyup="AjaxSearch(this.value)" id="patient_name"
                             autocomplete="off">
                         <div class="form-control-icon">
-                            <i class="bi bi-search"></i>
+                            @svg('search')
                         </div>
                     </div>
                     <div class="list-group shadow z-index-2 position-absolute mt-1" id="patients_list"
@@ -282,7 +279,7 @@
                                     onclick="HideLiveSearch()" placeholder="Search Tests "
                                     onkeyup="AjaxSearch(this.value, true)" id="test_name_search" autocomplete="off">
                                 <div class="form-control-icon">
-                                    <i class="bi bi-search"></i>
+                                    @svg('search')
                                 </div>
                             </div>
                             <div class="list-group shadow z-index-2 position-absolute mt-1" id="tests_list"

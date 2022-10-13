@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+// @import "~bootstrap/scss/bootstrap.scss";
+@import "./_variables.scss";
+@import "./styles.scss";
+:root{
+    font-size: 16px;
+    --anim: all 0.3s ease-in-out;
+}
+body {
+    font-family: 'Nunito';
+}
+#main {
+
+    transition: var(--anim);
+}
+b {
+    all: unset;
+}
+.table>:not(caption)>*>*{
+    border: none;
+}
+
+.menu-submenu {
+    display: flex;
+    flex-flow: column;
+    margin: 0.3rem 0 0.3rem 2.9rem;
+    padding: 0 !important;
+}
+.submenu-item {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+}
+details:focus-visible {
+    outline: none;
+}
+.submenu-item a {
+    padding: 0.3rem;
+    text-transform: capitalize;
+    transition: var(--anim);
+    border-radius: .3rem;
+}
+.submenu-item a:hover {
+    color: #fff;
+    border-radius: .3rem;
+    background-color: $primary;
+    padding-left: 1rem;
+    transition: var(--anim);
+}
+.menu-link.active, .menu-link.active > a {
+    background-color: $primary !important;
+    color: #fff !important;
+}
+.menu-link.active .menu-link::after {
+    filter: invert(1) opacity(0.5);
+}
+
+
+tr{
+    border-bottom-width: 0.01rem;
+}
+.place-center {
+    place-items: center;
+}
+.s-1 {
+    --size: 1rem;
+    height: var(--size);
+    width: var(--size);
+}
+.menu-link::marker {
+    content: none;
+}
+.menu {
+    height: calc(100vh - 9rem);
+    overflow: auto;
+}
+.menu-link {
+    background-color: #fff;
+    border-radius: .5rem;
+    transition: var(--anim);
+    color: #435ebe;
+}
+.menu-link:hover {
+    background-color: #f1f1f1;
+    transition: var(--anim);
+}
+.menu-item .menu-link::after {
+    --s: 20px;
+    background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="gray" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    content: "";
+    background-position: center;
+    background-origin: border-box;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: var(--s);
+    height: var(--s);
+    display:grid;
+    place-items: center;
+    rotate: 0deg;
+    translate: 0 50%;
+    transition: var(--anim);
+}
+details.menu-item[open] .menu-link::after {
+    rotate: 90deg;
+    transition: var(--anim);
+}
+summary {
+    position: relative;
+    padding: 6px;
+    cursor: pointer;
+}
+.lh-0 {
+    line-height: 0;
+}
+.flip-right {
+    rotate: 180deg;
+}
+.flip-left {
+    rotate: -180deg;
+}
+.pointer {
+    cursor: pointer;
+}
+.arrow {
+    opacity: 0.1;
+    cursor: pointer;
+    line-height: 0;
+    --size: 10px;
+    width: var(--size);
+    height: var(--size);
+    display: grid;
+    place-items: center;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+.arrow:hover {
+    opacity: .9;
+    transition: all 0.3s ease-in-out;
+}
+.active-arrow {
+    opacity: 1;
+}

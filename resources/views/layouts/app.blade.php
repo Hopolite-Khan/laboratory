@@ -1,69 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <script src="{{ asset('assets/js/alpine.min.js') }}" defer></script>
+    {{-- <script src="{{ asset('assets/js/alpine.min.js') }}" defer></script> --}}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title','Laboratory Application')</title>
+    <title>@yield('title', 'Laboratory Application')</title>
 
-    <link rel="stylesheet" href=" {{ asset('assets/css/main/app.css') }} ">
-    <link rel="stylesheet" href=" {{ asset('assets/css/main/app-dark.css') }} ">
-    <style>
-        :root{
-            font-size: 16px;
-        }
-        .table>:not(caption)>*>*{
-            border: none;
-        }
-        tr{
-            border-bottom-width: 0.01rem;
-        }
-        .place-center {
-            place-items: center;
-        }
-        .s-1 {
-            --size: 1rem;
-            height: var(--size);
-            width: var(--size);
-        }
-        .flip-right {
-            rotate: 180deg;
-        }
-        .flip-left {
-            rotate: -180deg;
-        }
-    </style>
+    @vite(["resources/scripts/app.js", "resources/scss/app.scss"])
     @stack('styles')
 </head>
 
-<body>
+<body x-data>
     @include('layouts.sidebar')
 
-    <div id="main" class='layout-navbar'>
+    <div id="main" :style="{ marginLeft: $store.app.open ? '300px' : '0'}" class='layout-navbar'>
         <header class='mb-3'>
-            <nav class="navbar navbar-expand navbar-light ">
+            <nav class="navbar navbar-expand navbar-light " >
                 <div class="container-fluid">
-                    <a href="#" class="burger-btn d-block">
-                        <i class="bi bi-justify fs-3"></i>
-                    </a>
-
+                    <button class="burger-btn d-block btn" @click="$store.app.toggleSidebar(); ">
+                        &#9776;
+                    </button>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
                             <li class="nav-item me-1">
                                 <a class="nav-link text-gray-600" href="{{ route('QRIndex') }}">
-                                    @svg('qr-code','s-1')
+                                    @svg('qr-code', 's-1')
                                 </a>
                             </li>
                             <li class="nav-item me-3">
                                 <a class="nav-link text-gray-600" href="#">
-                                    @svg('bar-code','s-1')
+                                    @svg('bar-code', 's-1')
                                 </a>
 
                             </li>
@@ -77,7 +50,7 @@
                                     </div>
                                     <div class="user-img d-flex align-items-center">
                                         <div class="avatar avatar-md">
-                                            <img src="assets/images/faces/1.jpg">
+                                            <img src="assets/images/faces.jpg">
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +85,7 @@
             </div>
         </footer>
         @stack('scripts')
-        <script src="{{ asset('assets/js/app.js') }}"></script>
+        {{-- <script src="{{ asset('assets/js/app.js') }}"></script> --}}
 
 </body>
 

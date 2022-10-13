@@ -1,8 +1,23 @@
 <?php
 
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +35,18 @@ Route::get('/route-cache', function () {
     Artisan::call('route:cache');
     return 'Route cache cleared! <br> Routes cached successfully!';
 });
-Route::get('/', function () {
-    return view('auth.login');
+Route::get('/optimize', function () {
+    Artisan::call('optimize');
+    return 'optimize! <br> Routes cached successfully!';
 });
-Route::get('/login-test', [App\Http\Controllers\FirebaseController::class, 'show'])->name('show.login');
-Route::post('/on-register', [App\Http\Controllers\FirebaseController::class, 'onRegister'])->name('register.user');
-
+// Route::get('/{locale}', [HomeController::class,'index'])->name('landingPages.home');
+// Route::get('/signin', function () {
+//     return view('auth.login');
+// })->name('signin');
+// Route::get('/login-test', [App\Http\Controllers\FirebaseController::class, 'show'])->name('show.login');
+// Route::post('/on-register', [App\Http\Controllers\FirebaseController::class, 'onRegister'])->name('register.user');
 Route::middleware('auth')->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
     Route::get('/QR', [App\Http\Controllers\HomeController::class, 'qr_index'])->name('QRIndex');
     Route::get('/Patients', [App\Http\Controllers\PatientController::class, 'index'])->name('GetPatient');
     Route::get('/api/patients', [App\Http\Controllers\PatientController::class, 'getPatients'])->name('api.patients');
@@ -54,3 +73,4 @@ Route::middleware('auth')->group(function () {
     Route::post('/Hospital/Store', [App\Http\Controllers\HospitalController::class, 'store'])->name('StoreHospital');
     Route::get('/hospital/search', [App\Http\Controllers\HospitalController::class, 'search'])->name('searchHospital');
 });
+

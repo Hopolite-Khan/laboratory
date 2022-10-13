@@ -15,11 +15,13 @@ class sidebaritem extends Component
     public $title;
     public $children;
     public $active;
-    public function __construct($title = 'title', $route = 'home', $children = false)
+    public $icon;
+    public function __construct($title = 'title', $route = 'home', $children = false, $icon ='grid-menu')
     {
         $this->title = $title;
         $this->route = $route;
         $this->children = $children;
+        $this->icon = $icon;
     }
 
     /**

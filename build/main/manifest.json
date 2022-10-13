@@ -1,0 +1,56 @@
+{
+  "resources/images/hero-bg-2.svg": {
+    "file": "assets/hero-bg-2.7e111b8a.svg",
+    "src": "resources/images/hero-bg-2.svg"
+  },
+  "resources/images/hero-section.svg": {
+    "file": "assets/hero-section.87a5c3a3.svg",
+    "src": "resources/images/hero-section.svg"
+  },
+  "resources/images/logo.svg": {
+    "file": "assets/logo.683fe393.svg",
+    "src": "resources/images/logo.svg"
+  },
+  "resources/images/hero-bg.svg": {
+    "file": "assets/hero-bg.ab787338.svg",
+    "src": "resources/images/hero-bg.svg"
+  },
+  "resources/images/why-us-1.svg": {
+    "file": "assets/why-us-1.a626daac.svg",
+    "src": "resources/images/why-us-1.svg"
+  },
+  "resources/images/section-2.svg": {
+    "file": "assets/section-2.5045520f.svg",
+    "src": "resources/images/section-2.svg"
+  },
+  "resources/images/why-us-2.svg": {
+    "file": "assets/why-us-2.f2d3d81e.svg",
+    "src": "resources/images/why-us-2.svg"
+  },
+  "resources/images/why-us-3.svg": {
+    "file": "assets/why-us-3.f1803cec.svg",
+    "src": "resources/images/why-us-3.svg"
+  },
+  "resources/scripts/main.ts": {
+    "file": "assets/main.1cbe36ea.js",
+    "src": "resources/scripts/main.ts",
+    "isEntry": true,
+    "css": [
+      "assets/main.0291fca7.css"
+    ],
+    "assets": [
+      "assets/logo.683fe393.svg",
+      "assets/hero-section.87a5c3a3.svg",
+      "assets/hero-bg.ab787338.svg",
+      "assets/hero-bg-2.7e111b8a.svg",
+      "assets/section-2.5045520f.svg",
+      "assets/why-us-1.a626daac.svg",
+      "assets/why-us-2.f2d3d81e.svg",
+      "assets/why-us-3.f1803cec.svg"
+    ]
+  },
+  "resources/scripts/main.css": {
+    "file": "assets/main.0291fca7.css",
+    "src": "resources/scripts/main.css"
+  }
+}
