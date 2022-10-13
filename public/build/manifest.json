@@ -1,12 +1,12 @@
 {
-  "resources/scripts/main.ts": {
-    "file": "assets/main.9470b65c.js",
-    "src": "resources/scripts/main.ts",
+  "resources/scripts/app.js": {
+    "file": "assets/app.e0f1e28e.js",
+    "src": "resources/scripts/app.js",
     "isEntry": true
   },
-  "resources/css/tailwind.css": {
-    "file": "assets/tailwind.58386d1e.css",
-    "src": "resources/css/tailwind.css",
+  "resources/scss/app.scss": {
+    "file": "assets/app.84458fc0.css",
+    "src": "resources/scss/app.scss",
     "isEntry": true
   }
 }
